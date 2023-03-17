@@ -35,11 +35,11 @@ namespace livraria
             await initialized();
             wbvPage.CoreWebView2.Settings.AreBrowserAcceleratorKeysEnabled = false;
             wbvPage.CoreWebView2.Settings.AreDefaultContextMenusEnabled = false;
-           // wbvPage.CoreWebView2.Navigate("https://yandex.com/images/");
+            wbvPage.CoreWebView2.Navigate("https://www.google.com.br/");
 
             wbvLinkedin.CoreWebView2.Settings.AreBrowserAcceleratorKeysEnabled = false;
             wbvLinkedin.CoreWebView2.Settings.AreDefaultContextMenusEnabled = false;
-           // wbvLinkedin.CoreWebView2.Navigate("https://www.linkedin.com/");
+            wbvLinkedin.CoreWebView2.Navigate("https://www.linkedin.com/");
         }
 
        public int retorna_perfil()
