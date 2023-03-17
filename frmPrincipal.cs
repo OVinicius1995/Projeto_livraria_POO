@@ -215,8 +215,9 @@ namespace livraria
                 txtQtde.Clear();
                 txtVenda.Clear();
                 txtValor.Clear();
-                txtMatricula.Clear();
-                txtMatricula.Focus();
+                cmbPesquisa.Text = "";
+
+                txtIsbn.Focus();
             }
 
             private void txtVenda_TextChanged(object sender, EventArgs e)
@@ -228,7 +229,7 @@ namespace livraria
                 else
                 {
                     dto.Isbn = txtIsbn.Text;
-                   dto.Venda = int.Parse(txtVenda.Text);
+                    dto.Venda = int.Parse(txtVenda.Text);
                     dto.Quantidade = int.Parse(txtQtde.Text);
                     dto.Nome = txtNome.Text;
                     dto.Valor = int.Parse(txtValor.Text);
@@ -289,7 +290,7 @@ namespace livraria
                     dto.Nacionalidade = txtNacionalidade.Text;
                     dtgVenda.DataSource = bll.Pesquisa_livroNacionalidade(dto);
                 }
-                if (cmbPesquisa.Text == "Classificacao")
+                if (cmbPesquisa.Text == "Classificacoes")
                 {
                     dto.Classificacao = txtClassificacao.Text;
                     dtgVenda.DataSource = bll.Pesquisa_livroClassificacao(dto);
@@ -302,46 +303,74 @@ namespace livraria
                 {
 
                     txtNome.Focus();
-                    txtIsbn.Enabled = false;
-                    txtAutor.Enabled = false;
-                    txtEditora.Enabled = false;
-                    txtNome.Enabled = true;
+                    txtIsbn.Enabled          = false;
+                    txtAutor.Enabled         = false;
+                    txtEditora.Enabled       = false;
                     txtClassificacao.Enabled = false;
                     txtNacionalidade.Enabled = false;
+
+                    txtIsbn.Clear();
+                    txtAutor.Clear();
+                    txtEditora.Clear();
+                    txtClassificacao.Clear();
+                    txtNacionalidade.Clear();
+
+                    txtNome.Enabled          = true;
                 }
                 if (cmbPesquisa.Text == "Autor")
                 {
 
                     txtAutor.Focus();
-                    txtIsbn.Enabled = false;
-                    txtAutor.Enabled = true;
-                    txtEditora.Enabled = false;
-                    txtNome.Enabled = false;
+                    txtIsbn.Enabled          = false;                    
+                    txtEditora.Enabled       = false;
+                    txtNome.Enabled          = false;
                     txtClassificacao.Enabled = false;
                     txtNacionalidade.Enabled = false;
+
+                    txtIsbn.Clear();
+                    txtEditora.Clear();
+                    txtNome.Clear();
+                    txtClassificacao.Clear();
+                    txtNacionalidade.Clear();
+
+                    txtAutor.Enabled = true;
                 }
 
                 if (cmbPesquisa.Text == "Editora")
                 {
 
                     txtEditora.Focus();
-                    txtIsbn.Enabled = false;
-                    txtAutor.Enabled = false;
-                    txtEditora.Enabled = true;
-                    txtNome.Enabled = false;
+                    txtIsbn.Enabled          = false;
+                    txtAutor.Enabled         = false;                    
+                    txtNome.Enabled          = false;
                     txtClassificacao.Enabled = false;
                     txtNacionalidade.Enabled = false;
+
+                    txtIsbn.Clear();
+                    txtAutor.Clear();
+                    txtNome.Clear();
+                    txtClassificacao.Clear();
+                    txtNacionalidade.Clear();
+
+                    txtEditora.Enabled      = true;
                 }
 
                 if (cmbPesquisa.Text == "Nacionalidade")
                 {
 
                     txtNacionalidade.Focus();
-                    txtIsbn.Enabled = false;
-                    txtAutor.Enabled = false;
-                    txtEditora.Enabled = false;
-                    txtNome.Enabled = false;
+                    txtIsbn.Enabled          = false;
+                    txtAutor.Enabled         = false;
+                    txtEditora.Enabled       = false;
+                    txtNome.Enabled          = false;
                     txtClassificacao.Enabled = false;
+
+                    txtIsbn.Clear();
+                    txtAutor.Clear();
+                    txtEditora.Clear();
+                    txtNome.Clear();
+                    txtClassificacao.Clear();
+
                     txtNacionalidade.Enabled = true;
                 }
 
@@ -349,11 +378,19 @@ namespace livraria
                 {
 
                     txtClassificacao.Focus();
-                    txtIsbn.Enabled = false;
-                    txtAutor.Enabled = false;
-                    txtEditora.Enabled = false;
-                    txtNome.Enabled = false;
+                    txtIsbn.Enabled          = false;
+                    txtAutor.Enabled         = false;
+                    txtEditora.Enabled       = false;
+                    txtNome.Enabled          = false;
                     txtNacionalidade.Enabled = false;
+
+                    txtIsbn.Clear();
+                    txtAutor.Clear();
+                    txtEditora.Clear();
+                    txtNome.Clear();
+                    txtNacionalidade.Clear();
+
+
                     txtClassificacao.Enabled = true;
                 }
             }
@@ -390,10 +427,5 @@ namespace livraria
                 limpar();
                 carrega_venda();
             }
-
-        private void pnlBotao_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
     }
 }

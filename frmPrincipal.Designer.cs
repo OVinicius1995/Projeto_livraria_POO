@@ -363,7 +363,7 @@
             "Editora",
             "Nacionalidade",
             "Classificacoes"});
-            this.cmbPesquisa.Location = new System.Drawing.Point(-3, 25);
+            this.cmbPesquisa.Location = new System.Drawing.Point(2, 25);
             this.cmbPesquisa.Name = "cmbPesquisa";
             this.cmbPesquisa.Size = new System.Drawing.Size(129, 21);
             this.cmbPesquisa.TabIndex = 7;
@@ -625,7 +625,6 @@
             this.pnlBotao.Name = "pnlBotao";
             this.pnlBotao.Size = new System.Drawing.Size(1114, 51);
             this.pnlBotao.TabIndex = 12;
-            this.pnlBotao.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlBotao_Paint);
             // 
             // frmPai
             // 
