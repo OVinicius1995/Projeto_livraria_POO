@@ -16,7 +16,7 @@ namespace livraria
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmPai());
+            Application.Run(new frmLogin());
         }
     }
 }

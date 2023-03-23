@@ -18,7 +18,6 @@ namespace livraria
     {
         livraria_DTO dto = new livraria_DTO();
         Livraria_BLL bll = new Livraria_BLL();
-        AcessoBancoDados bd = new AcessoBancoDados();
  
         public frmClientes()
         {

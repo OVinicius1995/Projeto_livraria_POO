@@ -253,7 +253,6 @@
             this.btnNovo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.tooldica.SetToolTip(this.btnNovo, "Limpa os dados para um novo registro");
             this.btnNovo.UseVisualStyleBackColor = true;
-            this.btnNovo.Click += new System.EventHandler(this.button1_Click);
             // 
             // shapeContainer1
             // 
@@ -643,6 +642,7 @@
             this.Name = "frmPai";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "On The Book";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmPai_FormClosing);
             this.Load += new System.EventHandler(this.frmPai_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

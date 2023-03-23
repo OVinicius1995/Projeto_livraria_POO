@@ -18,8 +18,7 @@ namespace livraria
         static System.Windows.Forms.Timer horas = new System.Windows.Forms.Timer();
         livraria_DTO dto = new livraria_DTO();
         Livraria_BLL bll = new Livraria_BLL();
-        BLL_Login log = new BLL_Login();
-        AcessoBancoDados bd = new AcessoBancoDados();
+        DAO_Mysql dao = new DAO_Mysql();
         
         public frmPai()
         {
@@ -62,18 +61,18 @@ namespace livraria
         public void frmPai_Load(object sender, EventArgs e)
         {
             carrega_venda();
-            txtPerfil.Text = livraria_DTO.getUsuario();
             
+           
             txtMatricula.Focus();
-
-            string mat = livraria_DTO.getTeste();
+            txtPerfil.Text = livraria_DTO.getPegamat();
+            string mat = livraria_DTO.getPegamat();
             carrega(mat);
-
+            bll.carreganovo(mat);
         }
         public void carrega_venda()
         {
             dtgVenda.DataSource = bll.Venda_Livros();
-            
+
         }
 
         private void dtgVenda_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -115,9 +114,9 @@ namespace livraria
 
                         txtValor.Text = resultado1.ToString();
 
-                        bd.Conectar();
+                        dao.Conectar();
                         string comando = "UPDATE Obras set Quantidade = '" + resultado + "'  where ISBN = " + dto.Isbn;
-                        bd.ExecutarComandoSQL(comando);
+                        dao.ExecutarComandoSQL(comando);
 
                         MessageBox.Show("O livro: " + " \"" + dto.Nome + " \"" + " foi vendido", "Venda", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         limpar();
@@ -147,16 +146,16 @@ namespace livraria
 
                     txtValor.Text = resultado.ToString();
 
-                    bd.Conectar();
+                    dao.Conectar();
                     string comando = "UPDATE Obras set Quantidade = '" + resultado + "'  where ISBN = " + dto.Isbn;
-                    bd.ExecutarComandoSQL(comando);
+                    dao.ExecutarComandoSQL(comando);
 
                     MessageBox.Show("O livro: " + " \"" + dto.Nome + " \"" + " foi vendido", "Venda", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    bd.Conectar();
+                    dao.Conectar();
                     //string comando1 = "INSERT INTO Funcionarios (vendidos) VALUES ('" + resultado1 + "',' where Matricula = '" + dto.Matriculla + "')";
                     string comando1 = "UPDATE Funcionarios set vendidos = '" + resultado1 + "'  where Matricula = " + dto.Matriculla;
-                    bd.ExecutarComandoSQL(comando1);
+                    dao.ExecutarComandoSQL(comando1);
                     carrega_venda();
                     limpar();
                 }
@@ -185,16 +184,16 @@ namespace livraria
 
                     txtValor.Text = resultado1.ToString();
 
-                    bd.Conectar();
+                    dao.Conectar();
                     string comando = "UPDATE Obras set Quantidade = '" + resultado + "'  where ISBN = " + dto.Isbn;
-                    bd.ExecutarComandoSQL(comando);
+                    dao.ExecutarComandoSQL(comando);
 
                     MessageBox.Show("O livro: " + " \"" + dto.Nome + " \"" + " foi vendido", "Venda", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    bd.Conectar();
+                    dao.Conectar();
                     //string comando1 = "INSERT INTO Funcionarios (vendidos) VALUES ('" + resultado1 + "',' where Matricula = '" + dto.Matriculla + "')";
                     string comando1 = "UPDATE Funcionarios set vendidos = '" + resultado1 + "'  where Matricula = " + dto.Matriculla;
-                    bd.ExecutarComandoSQL(comando1);
+                    dao.ExecutarComandoSQL(comando1);
                     carrega_venda();
                     limpar();
                 }
@@ -250,10 +249,6 @@ namespace livraria
                 
             }
 
-            private void button1_Click(object sender, EventArgs e)
-            {
-                limpar();
-            }
 
             private void Timhoras_Tick(object sender, EventArgs e)
             {
@@ -361,7 +356,7 @@ namespace livraria
                     txtNacionalidade.Focus();
                     txtIsbn.Enabled          = false;
                     txtAutor.Enabled         = false;
-                    txtEditora.Enabled       = false;
+                    txtEditora.Enabled       = false;   
                     txtNome.Enabled          = false;
                     txtClassificacao.Enabled = false;
 
@@ -403,10 +398,11 @@ namespace livraria
             try
             {
 
-                  bd.Conectar();
+                  dao.Conectar();
                   DataTable dt = new DataTable();
-                  dt = bd.RetDataTable("SELECT * FROM Funcionarios WHERE Nome LIKE '" + teste + "%'");
+                  dt = dao.RetDataTable("SELECT * FROM Funcionarios WHERE Nome LIKE '" + teste + "%'");
                   string[] matricula = new string[] { dt.Rows[0].ItemArray[0].ToString()};
+                  string[] name = new string[] { dt.Rows[0].ItemArray[1].ToString() };
                   txtMat.Text = matricula[0].ToString();
                   txtMatricula.Text = matricula[0].ToString();
 
@@ -427,5 +423,11 @@ namespace livraria
                 limpar();
                 carrega_venda();
             }
+
+        private void frmPai_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+
+        }
     }
 }

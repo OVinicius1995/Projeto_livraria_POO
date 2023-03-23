@@ -26,6 +26,7 @@ namespace livraria
         {
             try
             {
+
                 //dto.Cod_obra = 0;
                 dto.Isbn = mtbIsbn.Text;
                 dto.Autor = txtAutor.Text;
@@ -35,6 +36,9 @@ namespace livraria
                 dto.Nome = txtNomeLivro.Text;
                 dto.Quantidade = int.Parse(mtbQtde.Text);
                 dto.Valor = int.Parse(mskValor.Text);
+
+                string mat = dto.Isbn;
+                if (bll.carreganovo(mat)) { MessageBox.Show("Já existe"); } else { MessageBox.Show("Não!"); }
 
                 bll.Inserir_Livros(dto);
                 MessageBox.Show("O Livro : " + "\" " + txtNomeLivro.Text + " \" " +" foi  cadastrado com sucesso!", "Cadastro", MessageBoxButtons.OK, MessageBoxIcon.Information);

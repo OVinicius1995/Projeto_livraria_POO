@@ -15,13 +15,22 @@ namespace DAL
         private MySqlConnection con;
         private MySqlCommand comando;
         private MySqlDataAdapter da;
+        private DataTable data;
 
-        public DAO_Mysql(string servidor, string usuario, string senha, string banco)
+        private string servidor = "localhost";
+        private string usuario = "root";
+        private string senha = "";
+        private string bd = "livraria";
+
+        public DAO_Mysql()
         {
+            if (con != null)
+                con.Close();
+
             try
             {
                 con = new MySqlConnection();
-                con.ConnectionString = string.Format("server={0};uid={1};pwd={2};database={3}", "localhost", "root", "", "livraria");
+                con.ConnectionString = string.Format("server={0};uid={1};pwd={2};database={3}", servidor, usuario, senha, bd);
 
                 comando = new MySqlCommand();
                 comando.Connection = con;
@@ -33,6 +42,32 @@ namespace DAL
                 throw ex;
             }
         }
+
+        public void Conectar()
+        {
+            if (con != null)
+                con.Close();
+
+            string connStr = String.Format("server={0};uid={1};pwd={2};database={3}", servidor, usuario, senha, bd);
+
+            try
+            {
+                con = new MySqlConnection();
+                comando = new MySqlCommand();
+                comando.Connection = con;
+                da = new MySqlDataAdapter();
+
+                con = new MySqlConnection(connStr);
+                con.Open();
+            }
+
+            catch (Exception ex)
+            {
+                throw ex;
+
+            }
+        }
+
 
         private void Abrir_Conexao()
         {
@@ -154,25 +189,6 @@ namespace DAL
             }
         }
 
-        public void Inserir_dados(string tabela, string campos, string valores)
-        {
-            try
-            {
-                comando.CommandText = string.Format("insert into {0}({1}) values({2})", tabela, campos, valores);
-
-                Abrir_Conexao();
-                comando.ExecuteNonQuery();
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                con.Close();
-            }
-        }
-
         public void Excluir_dados(string tabela, string condicao)
         {
             try
@@ -209,6 +225,21 @@ namespace DAL
             {
                 con.Close();
             }
+        }
+
+        public DataTable RetDataTable(string sql)
+        {
+            data = new DataTable();
+            da = new MySqlDataAdapter(sql, con);
+            da.Fill(data);
+            return data;
+        }
+
+        public void ExecutarComandoSQL(string comandoSql)
+        {
+            MySqlCommand comando = new MySqlCommand(comandoSql, con);
+            comando.ExecuteNonQuery();
+            con.Close();
         }
 
     }
