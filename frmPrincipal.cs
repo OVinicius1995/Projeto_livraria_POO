@@ -103,17 +103,17 @@ namespace livraria
                 {
                     try
                     {
-                        dto.Isbn = txtIsbn.Text;
-                        dto.Vendidos = int.Parse(txtVenda.Text);
-                        dto.Quantidade = int.Parse(txtQtde.Text);
-                        dto.Nome = txtNome.Text;
-                        dto.Valor = int.Parse(txtValor.Text);
+                        dto.Isbn        = txtIsbn.Text;
+                        dto.Vendidos    = int.Parse(txtVenda.Text);
+                        dto.Quantidade  = int.Parse(txtQtde.Text);
+                        dto.Nome        = txtNome.Text;
+                        dto.Valor       = int.Parse(txtValor.Text);
 
-                        var resultado = dto.Quantidade - dto.Venda;
+                        //var resultado = dto.Quantidade - dto.Venda;
 
-                        var resultado1 = dto.Venda * dto.Valor;
+                        var resultado = dto.Venda * dto.Valor;
 
-                        txtValor.Text = resultado1.ToString();
+                        txtValor.Text = resultado.ToString();
 
                         bll.VenderLivros(dto);
 
@@ -133,18 +133,17 @@ namespace livraria
 
                 try
                 {
-                    dto.Matriculla = int.Parse(txtMatricula.Text);
-                    dto.Isbn = txtIsbn.Text;
-                    dto.Vendidos = int.Parse(txtVenda.Text);
-                    dto.Quantidade = int.Parse(txtQtde.Text);
-                    dto.Nome = txtNome.Text;
-                    dto.Valor = int.Parse(txtValor.Text);
+                    dto.Matriculla  = int.Parse(txtMatricula.Text);
+                    dto.Isbn        = txtIsbn.Text;
+                    dto.Vendidos    = int.Parse(txtVenda.Text);
+                    dto.Quantidade  = int.Parse(txtQtde.Text);
+                    dto.Nome        = txtNome.Text;
+                    dto.Valor       = int.Parse(txtValor.Text);
 
-                    var resultado = dto.Quantidade - dto.Venda;
+                    //var resultado = dto.Quantidade - dto.Venda;
+                    var resultado = dto.Venda++;
 
-                    var resultado1 = dto.Venda++;
-
-                    txtValor.Text = resultado1.ToString();
+                    txtValor.Text = resultado.ToString();
                     bll.VenderLivros(dto);
 
                     MessageBox.Show("O livro: " + " \"" + dto.Nome + " \"" + " foi vendido", "Venda", MessageBoxButtons.OK, MessageBoxIcon.Information);

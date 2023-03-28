@@ -246,7 +246,7 @@ namespace livraria
             try
             {
                 dao.Conectar();
-                string comando = "INSET INTO venda (funcionarios_Matricula,obras_ISBN,Qtde_Venda) VALUES ('" + dto.Matriculla + "','" + dto.Isbn + "','" + dto.Vendidos + "')";
+                string comando = "INSERT INTO venda (funcionarios_Matricula,obras_ISBN,Qtde_Venda) VALUES ('" + dto.Matriculla + "','" + dto.Isbn + "','" + dto.Vendidos + "')";
                 dao.ExecutarComandoSQL(comando);
             }
             catch (Exception ex)
