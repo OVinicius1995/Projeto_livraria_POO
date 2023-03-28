@@ -152,7 +152,7 @@ namespace DAL
             DataTable dt = new DataTable();
             try
             {
-                comando.CommandText = string.Format("select {0} from {1} where {2}", campos, tabela, condicao);
+                comando.CommandText = string.Format("select {0} from {1} where {2}",campos,tabela,condicao);
 
                 da.SelectCommand = comando;
                 Abrir_Conexao();

@@ -13,9 +13,8 @@ namespace livraria
     class Livraria_BLL
     {
 
-
-        livraria_DTO    dto = new livraria_DTO();
-        DAO_Mysql       dao = new DAO_Mysql();
+        livraria_DTO dto = new livraria_DTO();
+        DAO_Mysql dao = new DAO_Mysql();
 
         public bool Valida_Login(livraria_DTO dto)
         {
@@ -137,7 +136,7 @@ namespace livraria
             {
                 Console.ReadLine();
             }
-               
+
         }
 
 
@@ -240,6 +239,27 @@ namespace livraria
                 Console.ReadLine();
             }
         }
+
+        public void VenderLivros(livraria_DTO dto)
+        {
+
+            try
+            {
+                dao.Conectar();
+                string comando = "INSET INTO venda (funcionarios_Matricula,obras_ISBN,Qtde_Venda) VALUES ('" + dto.Matriculla + "','" + dto.Isbn + "','" + dto.Vendidos + "')";
+                dao.ExecutarComandoSQL(comando);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                Console.ReadLine();
+            }
+        }
+
+
         public DataTable Seleciona_Livros()
         {
             try
@@ -308,7 +328,7 @@ namespace livraria
                 string nome = dto.Nome.Replace("'", "''");
                 dt = dao.RetDataTable("SELECT * from Obras WHERE nome LIKE '%" + nome + "%'");
                 return dt;
-                
+
             }
             catch (Exception ex)
             {
@@ -319,7 +339,7 @@ namespace livraria
         {
             try
             {
-              
+
                 DataTable dt = new DataTable();
                 string autor = dto.Autor.Replace("'", "''");
                 dao.Conectar();
@@ -331,8 +351,8 @@ namespace livraria
                 throw ex;
             }
         }
-                public DataTable Pesquisa_livroEditora(livraria_DTO dto)
-                {
+        public DataTable Pesquisa_livroEditora(livraria_DTO dto)
+        {
             try
             {
                 DataTable dt = new DataTable();
@@ -345,94 +365,90 @@ namespace livraria
             {
                 throw ex;
             }
-                }
-                public DataTable Pesquisa_livroNacionalidade(livraria_DTO dto)
-                {
-                    try
-                    {
-                        DataTable dt = new DataTable();
-                        dao.Conectar();
-                        dt = dao.RetDataTable("SELECT * from Obras WHERE Nacionalidade LIKE '%" + dto.Nacionalidade + "%'");
-                        return dt;
-                    }
-                    catch (Exception ex)
-                    {
-                        throw ex;
-                    }
-
-                }
-                public DataTable Pesquisa_livroClassificacao(livraria_DTO dto)
-                {
-                    try
-                    {
-                        DataTable dt = new DataTable();
-                        dao.Conectar();
-                        dt = dao.RetDataTable("SELECT * from Obras WHERE Classificacao LIKE '%" + dto.Classificacao + "%'");
-                        return dt;
-                    }
-                    catch (Exception ex)
-                    {
-                        throw ex;
-                    }
-                }
-
-                public DataTable Venda_Livros()
-                {
-                try
-                {
-                      DataTable dt = new DataTable();
-                      dao.Conectar();
-                  dt = dao.RetDataTable("SELECT * FROM Obras");
+        }
+        public DataTable Pesquisa_livroNacionalidade(livraria_DTO dto)
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+                dao.Conectar();
+                dt = dao.RetDataTable("SELECT * from Obras WHERE Nacionalidade LIKE '%" + dto.Nacionalidade + "%'");
                 return dt;
-                }
-                catch (Exception ex)
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+        public DataTable Pesquisa_livroClassificacao(livraria_DTO dto)
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+                dao.Conectar();
+                dt = dao.RetDataTable("SELECT * from Obras WHERE Classificacao LIKE '%" + dto.Classificacao + "%'");
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public DataTable Busca_Livros()
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+                dao.Conectar();
+                dt = dao.RetDataTable("SELECT * FROM Obras");
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                Console.ReadLine();
+            }
+        }
+        //public void vender_livro(livraria_DTO dto)
+        //{
+
+        //    dao.Conectar();
+        //    string comando = "UPDATE Obras set Quantidade = '" + dto.Resultados + "'  where ISBN = " + dto.Isbn;
+        //    dao.ExecutarComandoSQL(comando);
+
+        //}
+
+        public bool checaLivros(string Isbn)
+        {
+            try
+            {
+
+                dao.Conectar();
+                DataTable dt = new DataTable();
+                dt = dao.RetDataTable("SELECT * FROM obras WHERE ISBN = '" + Isbn + "'");
+
+
+                if (dt.Rows.Count == 1) { return true; }
+
+                else
                 {
-                       throw ex;
-                    }
-                    finally
-                    {
-                    Console.ReadLine();
-                  }
+                    return false;
                 }
-                public void vender_livro(livraria_DTO dto)
-                {
-                    
-                    dao.Conectar();
-                    string comando = "UPDATE Obras set Quantidade = '" + dto.Resultados + "'  where ISBN = " + dto.Isbn;
-                    dao.ExecutarComandoSQL(comando);
-         
-                }
-
-                public bool carreganovo(string teste)
-                {
-
-
-                    try
-                    {
-
-                        dao.Conectar();
-                        DataTable dt = new DataTable();
-                        dt = dao.RetDataTable("SELECT * FROM obras WHERE ISBN = '" + teste + "'");
-                        //string[] name = new string[] { dt.Rows[0].ItemArray[1].ToString() };
-
-                        if (dt.Rows.Count == 1) { return true; }
-
-                        else
-                        {
-                            return false;
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        throw ex;
-                    }
-                    finally
-                    {
-                        Console.ReadLine();
-                    }
-                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                Console.ReadLine();
+            }
+        }
 
     }
-
-
 }

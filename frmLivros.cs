@@ -37,14 +37,22 @@ namespace livraria
                 dto.Quantidade = int.Parse(mtbQtde.Text);
                 dto.Valor = int.Parse(mskValor.Text);
 
-                string mat = dto.Isbn;
-                if (bll.carreganovo(mat)) { MessageBox.Show("Já existe"); } else { MessageBox.Show("Não!"); }
+                string ChecaIsbn = dto.Isbn;
+                if (bll.checaLivros(ChecaIsbn)) { 
+                    
+                    MessageBox.Show("Este ISBN já existe! Verifique!","ISBN já existente.",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                    mtbIsbn.Focus();
 
-                bll.Inserir_Livros(dto);
-                MessageBox.Show("O Livro : " + "\" " + txtNomeLivro.Text + " \" " +" foi  cadastrado com sucesso!", "Cadastro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                } else {
 
-                carrega_livros();
-                limpa_livros();
+                    bll.Inserir_Livros(dto);
+                    MessageBox.Show("O Livro : " + "\" " + txtNomeLivro.Text + " \" " + " foi  cadastrado com sucesso!", "Cadastro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    carrega_livros();
+                    limpa_livros();
+
+                }
+
             }
             catch (Exception ex)
             {

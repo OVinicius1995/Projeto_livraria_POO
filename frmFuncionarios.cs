@@ -95,22 +95,22 @@ namespace livraria
 
         private void dtgFuncionario_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {  
-            txtMatricula.Text           = dtgFuncionario.Rows[e.RowIndex].Cells[0].Value.ToString();
-            txtNomeFuncionario.Text     = dtgFuncionario.Rows[e.RowIndex].Cells[1].Value.ToString();
-            txtSenha.Text               = dtgFuncionario.Rows[e.RowIndex].Cells[2].Value.ToString();
-            mtbRgFuncionario.Text       = dtgFuncionario.Rows[e.RowIndex].Cells[3].Value.ToString();
-            mtbCpfFuncionario.Text      = dtgFuncionario.Rows[e.RowIndex].Cells[4].Value.ToString();
-            mtbTelefoneFuncionario.Text = dtgFuncionario.Rows[e.RowIndex].Cells[5].Value.ToString();
-            cmbSexo.Text                = dtgFuncionario.Rows[e.RowIndex].Cells[6].Value.ToString();
-            dtData.Text                 = dtgFuncionario.Rows[e.RowIndex].Cells[7].Value.ToString();
-            txtEnderecoFuncionario.Text = dtgFuncionario.Rows[e.RowIndex].Cells[8].Value.ToString();
-            txtBairroFuncionario.Text = dtgFuncionario.Rows[e.RowIndex].Cells[9].Value.ToString();
-            txtCidadeFuncionario.Text = dtgFuncionario.Rows[e.RowIndex].Cells[10].Value.ToString();
+            txtMatricula.Text              = dtgFuncionario.Rows[e.RowIndex].Cells[0].Value.ToString();
+            txtNomeFuncionario.Text        = dtgFuncionario.Rows[e.RowIndex].Cells[1].Value.ToString();
+            txtSenha.Text                  = dtgFuncionario.Rows[e.RowIndex].Cells[2].Value.ToString();
+            mtbRgFuncionario.Text          = dtgFuncionario.Rows[e.RowIndex].Cells[3].Value.ToString();
+            mtbCpfFuncionario.Text         = dtgFuncionario.Rows[e.RowIndex].Cells[4].Value.ToString();
+            mtbTelefoneFuncionario.Text    = dtgFuncionario.Rows[e.RowIndex].Cells[5].Value.ToString();
+            cmbSexo.Text                   = dtgFuncionario.Rows[e.RowIndex].Cells[6].Value.ToString();
+            dtData.Text                    = dtgFuncionario.Rows[e.RowIndex].Cells[7].Value.ToString();
+            txtEnderecoFuncionario.Text    = dtgFuncionario.Rows[e.RowIndex].Cells[8].Value.ToString();
+            txtBairroFuncionario.Text      = dtgFuncionario.Rows[e.RowIndex].Cells[9].Value.ToString();
+            txtCidadeFuncionario.Text      = dtgFuncionario.Rows[e.RowIndex].Cells[10].Value.ToString();
             txtComplementoFuncionario.Text = dtgFuncionario.Rows[e.RowIndex].Cells[11].Value.ToString();
-            txtUfFuncionario.Text = dtgFuncionario.Rows[e.RowIndex].Cells[12].Value.ToString();
-            txtNumeroFuncionario.Text = dtgFuncionario.Rows[e.RowIndex].Cells[13].Value.ToString();
-            txtLogradouroFuncionario.Text = dtgFuncionario.Rows[e.RowIndex].Cells[14].Value.ToString();
-            mtbCepFuncionario.Text = dtgFuncionario.Rows[e.RowIndex].Cells[15].Value.ToString();
+            txtUfFuncionario.Text          = dtgFuncionario.Rows[e.RowIndex].Cells[12].Value.ToString();
+            txtNumeroFuncionario.Text      = dtgFuncionario.Rows[e.RowIndex].Cells[13].Value.ToString();
+            txtLogradouroFuncionario.Text  = dtgFuncionario.Rows[e.RowIndex].Cells[14].Value.ToString();
+            mtbCepFuncionario.Text         = dtgFuncionario.Rows[e.RowIndex].Cells[15].Value.ToString();
             //txtVendidos.Text = dtgFuncionario.Rows[e.RowIndex].Cells[16].Value.ToString();
         }
 

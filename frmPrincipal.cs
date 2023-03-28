@@ -19,7 +19,7 @@ namespace livraria
         livraria_DTO dto = new livraria_DTO();
         Livraria_BLL bll = new Livraria_BLL();
         DAO_Mysql dao = new DAO_Mysql();
-        
+
         public frmPai()
         {
             InitializeComponent();
@@ -36,8 +36,8 @@ namespace livraria
         private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmClientes objFrmClientes = new frmClientes();
-            objFrmClientes.ShowDialog();            
-            
+            objFrmClientes.ShowDialog();
+
         }
 
 
@@ -61,17 +61,17 @@ namespace livraria
         public void frmPai_Load(object sender, EventArgs e)
         {
             carrega_venda();
-            
-           
+
+
             txtMatricula.Focus();
             txtPerfil.Text = livraria_DTO.getPegamat();
             string mat = livraria_DTO.getPegamat();
-            carrega(mat);
-            bll.carreganovo(mat);
+            carregaFunc(mat);
+
         }
         public void carrega_venda()
         {
-            dtgVenda.DataSource = bll.Venda_Livros();
+            dtgVenda.DataSource = bll.Busca_Livros();
 
         }
 
@@ -93,6 +93,7 @@ namespace livraria
             if (txtVenda.Text == "")
             {
                 MessageBox.Show("Não foi especificado a quantidade de livros a ser vendido", "Quantidade", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                limpar();
             }
 
             else if (txtMatricula.Text == "")
@@ -103,7 +104,7 @@ namespace livraria
                     try
                     {
                         dto.Isbn = txtIsbn.Text;
-                        dto.Venda = int.Parse(txtVenda.Text);
+                        dto.Vendidos = int.Parse(txtVenda.Text);
                         dto.Quantidade = int.Parse(txtQtde.Text);
                         dto.Nome = txtNome.Text;
                         dto.Valor = int.Parse(txtValor.Text);
@@ -114,9 +115,7 @@ namespace livraria
 
                         txtValor.Text = resultado1.ToString();
 
-                        dao.Conectar();
-                        string comando = "UPDATE Obras set Quantidade = '" + resultado + "'  where ISBN = " + dto.Isbn;
-                        dao.ExecutarComandoSQL(comando);
+                        bll.VenderLivros(dto);
 
                         MessageBox.Show("O livro: " + " \"" + dto.Nome + " \"" + " foi vendido", "Venda", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         limpar();
@@ -129,43 +128,6 @@ namespace livraria
                 }
             }
 
-            else if (txtVenda.Text == txtVenda.Text)
-            {
-                try
-                {
-                    dto.Matriculla = int.Parse(txtMatricula.Text);
-                    dto.Isbn = txtIsbn.Text;
-                    dto.Venda = int.Parse(txtVenda.Text);
-                    dto.Quantidade = int.Parse(txtQtde.Text);
-                    dto.Nome = txtNome.Text;
-                    dto.Valor = int.Parse(txtValor.Text);
-
-                    var resultado = dto.Quantidade - dto.Venda;
-
-                    var resultado1 = dto.Venda++;
-
-                    txtValor.Text = resultado.ToString();
-
-                    dao.Conectar();
-                    string comando = "UPDATE Obras set Quantidade = '" + resultado + "'  where ISBN = " + dto.Isbn;
-                    dao.ExecutarComandoSQL(comando);
-
-                    MessageBox.Show("O livro: " + " \"" + dto.Nome + " \"" + " foi vendido", "Venda", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    dao.Conectar();
-                    //string comando1 = "INSERT INTO Funcionarios (vendidos) VALUES ('" + resultado1 + "',' where Matricula = '" + dto.Matriculla + "')";
-                    string comando1 = "UPDATE Funcionarios set vendidos = '" + resultado1 + "'  where Matricula = " + dto.Matriculla;
-                    dao.ExecutarComandoSQL(comando1);
-                    carrega_venda();
-                    limpar();
-                }
-                catch (Exception ex)
-                {
-                    throw ex;
-                }
-            }
-
-
             else if (txtMatricula.Text == txtMatricula.Text)
             {
 
@@ -173,7 +135,7 @@ namespace livraria
                 {
                     dto.Matriculla = int.Parse(txtMatricula.Text);
                     dto.Isbn = txtIsbn.Text;
-                    dto.Venda = int.Parse(txtVenda.Text);
+                    dto.Vendidos = int.Parse(txtVenda.Text);
                     dto.Quantidade = int.Parse(txtQtde.Text);
                     dto.Nome = txtNome.Text;
                     dto.Valor = int.Parse(txtValor.Text);
@@ -183,17 +145,10 @@ namespace livraria
                     var resultado1 = dto.Venda++;
 
                     txtValor.Text = resultado1.ToString();
-
-                    dao.Conectar();
-                    string comando = "UPDATE Obras set Quantidade = '" + resultado + "'  where ISBN = " + dto.Isbn;
-                    dao.ExecutarComandoSQL(comando);
+                    bll.VenderLivros(dto);
 
                     MessageBox.Show("O livro: " + " \"" + dto.Nome + " \"" + " foi vendido", "Venda", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    dao.Conectar();
-                    //string comando1 = "INSERT INTO Funcionarios (vendidos) VALUES ('" + resultado1 + "',' where Matricula = '" + dto.Matriculla + "')";
-                    string comando1 = "UPDATE Funcionarios set vendidos = '" + resultado1 + "'  where Matricula = " + dto.Matriculla;
-                    dao.ExecutarComandoSQL(comando1);
                     carrega_venda();
                     limpar();
                 }
@@ -203,211 +158,242 @@ namespace livraria
                 }
             }
         }
-            public void limpar()
+        public void limpar()
+        {
+            txtIsbn.Clear();
+            txtNome.Clear();
+            txtAutor.Clear();
+            txtEditora.Clear();
+            txtNacionalidade.Clear();
+            txtClassificacao.Clear();
+            txtQtde.Clear();
+            txtVenda.Clear();
+            txtValor.Clear();
+            cmbPesquisa.Text = "";
+
+            txtIsbn.Focus();
+        }
+
+        private void txtVenda_TextChanged(object sender, EventArgs e)
+        {
+            var quantidade = txtQtde.Text;
+            var vendidos = txtVenda.Text;
+
+            if (txtQtde.Text == "" || txtVenda.Text == "")
             {
+
+                limpar();
+                MessageBox.Show("Livro não selecionado ou valor alterado. Selecione o livro novamente por favor!", "Livro não selecionado ou valor alterado.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
+
+            else if (int.Parse(vendidos) > int.Parse(quantidade))
+            {
+                limpar();
+                MessageBox.Show("O valor de livros vendidos está maior do que o estoque, verifique!", "Selecione o livro novamente por favor!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtValor.Text = "";
+                txtVenda.Text = "";
+                btnVenda.Enabled = false;
+            }
+
+            else if (txtVenda.Text == "" || txtIsbn.Text == "")
+            {
+                limpar();
+                MessageBox.Show("Selecione um livro", "Selecione o livro novamente por favor!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtValor.Text = "";
+                txtVenda.Text = "";
+                btnVenda.Enabled = false;
+
+
+            }
+            else
+            {
+
+                dto.Isbn = txtIsbn.Text;
+                dto.Venda = int.Parse(txtVenda.Text);
+                dto.Quantidade = int.Parse(txtQtde.Text);
+                dto.Nome = txtNome.Text;
+                dto.Valor = int.Parse(txtValor.Text);
+
+                var resultado = dto.Quantidade - dto.Venda;
+
+                var resultado1 = dto.Venda * dto.Valor;
+
+                txtValor.Text = resultado1.ToString();
+
+                btnVenda.Enabled = true;
+
+            }
+        }
+
+        private void timAtualiza_Tick(object sender, EventArgs e)
+        {
+            carrega_venda();
+
+        }
+
+
+        private void Timhoras_Tick(object sender, EventArgs e)
+        {
+            lblNow.Text = (DateTime.Now.ToString());
+        }
+
+        private void btnPesquisa_Click(object sender, EventArgs e)
+        {
+            if (cmbPesquisa.Text == "Nome")
+            {
+
+
+                dto.Nome = txtNome.Text;
+                dtgVenda.DataSource = bll.Pesquisa_livroNome(dto);
+
+            }
+            if (cmbPesquisa.Text == "Autor")
+            {
+
+                dto.Autor = txtAutor.Text;
+                var result = dtgVenda.DataSource = bll.Pesquisa_livroAutor(dto);
+                result = dtgVenda.Rows.ToString();
+
+            }
+            if (cmbPesquisa.Text == "Editora")
+            {
+                dto.Editora = txtEditora.Text;
+                dtgVenda.DataSource = bll.Pesquisa_livroEditora(dto);
+            }
+
+            if (cmbPesquisa.Text == "Nacionalidade")
+            {
+
+                dto.Nacionalidade = txtNacionalidade.Text;
+                dtgVenda.DataSource = bll.Pesquisa_livroNacionalidade(dto);
+            }
+            if (cmbPesquisa.Text == "Classificacoes")
+            {
+                dto.Classificacao = txtClassificacao.Text;
+                dtgVenda.DataSource = bll.Pesquisa_livroClassificacao(dto);
+            }
+        }
+
+        private void cmbPesquisa_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbPesquisa.Text == "Nome")
+            {
+                txtIsbn.Enabled = false;
+                txtAutor.Enabled = false;
+                txtEditora.Enabled = false;
+                txtClassificacao.Enabled = false;
+                txtNacionalidade.Enabled = false;
+
                 txtIsbn.Clear();
-                txtNome.Clear();
                 txtAutor.Clear();
                 txtEditora.Clear();
-                txtNacionalidade.Clear();
                 txtClassificacao.Clear();
-                txtQtde.Clear();
-                txtVenda.Clear();
-                txtValor.Clear();
-                cmbPesquisa.Text = "";
+                txtNacionalidade.Clear();
 
-                txtIsbn.Focus();
+                txtNome.Enabled = true;
+                txtNome.Focus();
+            }
+            if (cmbPesquisa.Text == "Autor")
+            {
+                txtIsbn.Enabled = false;
+                txtEditora.Enabled = false;
+                txtNome.Enabled = false;
+                txtClassificacao.Enabled = false;
+                txtNacionalidade.Enabled = false;
+
+                txtIsbn.Clear();
+                txtEditora.Clear();
+                txtNome.Clear();
+                txtClassificacao.Clear();
+                txtNacionalidade.Clear();
+
+                txtAutor.Enabled = true;
+                txtAutor.Focus();
             }
 
-            private void txtVenda_TextChanged(object sender, EventArgs e)
+            if (cmbPesquisa.Text == "Editora")
             {
-                if (txtVenda.Text == "")
-                {
+                txtIsbn.Enabled = false;
+                txtAutor.Enabled = false;
+                txtNome.Enabled = false;
+                txtClassificacao.Enabled = false;
+                txtNacionalidade.Enabled = false;
 
-                }
-                else
-                {
-                    dto.Isbn = txtIsbn.Text;
-                    dto.Venda = int.Parse(txtVenda.Text);
-                    dto.Quantidade = int.Parse(txtQtde.Text);
-                    dto.Nome = txtNome.Text;
-                    dto.Valor = int.Parse(txtValor.Text);
+                txtIsbn.Clear();
+                txtAutor.Clear();
+                txtNome.Clear();
+                txtClassificacao.Clear();
+                txtNacionalidade.Clear();
 
-                    var resultado = dto.Quantidade - dto.Venda;
-
-                    var resultado1 = dto.Venda * dto.Valor;
-
-                    txtValor.Text = resultado1.ToString();
-
-                    
-                }
-         }
-
-            private void timAtualiza_Tick(object sender, EventArgs e)
-            {
-                carrega_venda();
-                
+                txtEditora.Enabled = true;
+                txtEditora.Focus();
             }
 
-
-            private void Timhoras_Tick(object sender, EventArgs e)
+            if (cmbPesquisa.Text == "Nacionalidade")
             {
-                lblNow.Text = (DateTime.Now.ToString());
+                txtIsbn.Enabled = false;
+                txtAutor.Enabled = false;
+                txtEditora.Enabled = false;
+                txtNome.Enabled = false;
+                txtClassificacao.Enabled = false;
+
+                txtIsbn.Clear();
+                txtAutor.Clear();
+                txtEditora.Clear();
+                txtNome.Clear();
+                txtClassificacao.Clear();
+
+                txtNacionalidade.Enabled = true;
+                txtNacionalidade.Focus();
             }
 
-            private void btnPesquisa_Click(object sender, EventArgs e)
+            if (cmbPesquisa.Text == "Classificacoes")
             {
-                if (cmbPesquisa.Text == "Nome")
-                {
+                txtIsbn.Enabled = false;
+                txtAutor.Enabled = false;
+                txtEditora.Enabled = false;
+                txtNome.Enabled = false;
+                txtNacionalidade.Enabled = false;
+
+                txtIsbn.Clear();
+                txtAutor.Clear();
+                txtEditora.Clear();
+                txtNome.Clear();
+                txtNacionalidade.Clear();
 
 
-                    dto.Nome = txtNome.Text;
-                    dtgVenda.DataSource = bll.Pesquisa_livroNome(dto);
-
-                }
-                if (cmbPesquisa.Text == "Autor")
-                {
-
-                    dto.Autor = txtAutor.Text;
-                    var result = dtgVenda.DataSource = bll.Pesquisa_livroAutor(dto);
-                    result = dtgVenda.Rows.ToString();
-
-                }
-                if (cmbPesquisa.Text == "Editora")
-                {
-                    dto.Editora = txtEditora.Text;
-                    dtgVenda.DataSource = bll.Pesquisa_livroEditora(dto);
-                }
-
-                if (cmbPesquisa.Text == "Nacionalidade")
-                {
-
-                    dto.Nacionalidade = txtNacionalidade.Text;
-                    dtgVenda.DataSource = bll.Pesquisa_livroNacionalidade(dto);
-                }
-                if (cmbPesquisa.Text == "Classificacoes")
-                {
-                    dto.Classificacao = txtClassificacao.Text;
-                    dtgVenda.DataSource = bll.Pesquisa_livroClassificacao(dto);
-                }
+                txtClassificacao.Enabled = true;
+                txtClassificacao.Focus();
             }
-
-            private void cmbPesquisa_SelectedIndexChanged(object sender, EventArgs e)
-            {
-                if (cmbPesquisa.Text == "Nome")
-                {
-
-                    txtNome.Focus();
-                    txtIsbn.Enabled          = false;
-                    txtAutor.Enabled         = false;
-                    txtEditora.Enabled       = false;
-                    txtClassificacao.Enabled = false;
-                    txtNacionalidade.Enabled = false;
-
-                    txtIsbn.Clear();
-                    txtAutor.Clear();
-                    txtEditora.Clear();
-                    txtClassificacao.Clear();
-                    txtNacionalidade.Clear();
-
-                    txtNome.Enabled          = true;
-                }
-                if (cmbPesquisa.Text == "Autor")
-                {
-
-                    txtAutor.Focus();
-                    txtIsbn.Enabled          = false;                    
-                    txtEditora.Enabled       = false;
-                    txtNome.Enabled          = false;
-                    txtClassificacao.Enabled = false;
-                    txtNacionalidade.Enabled = false;
-
-                    txtIsbn.Clear();
-                    txtEditora.Clear();
-                    txtNome.Clear();
-                    txtClassificacao.Clear();
-                    txtNacionalidade.Clear();
-
-                    txtAutor.Enabled = true;
-                }
-
-                if (cmbPesquisa.Text == "Editora")
-                {
-
-                    txtEditora.Focus();
-                    txtIsbn.Enabled          = false;
-                    txtAutor.Enabled         = false;                    
-                    txtNome.Enabled          = false;
-                    txtClassificacao.Enabled = false;
-                    txtNacionalidade.Enabled = false;
-
-                    txtIsbn.Clear();
-                    txtAutor.Clear();
-                    txtNome.Clear();
-                    txtClassificacao.Clear();
-                    txtNacionalidade.Clear();
-
-                    txtEditora.Enabled      = true;
-                }
-
-                if (cmbPesquisa.Text == "Nacionalidade")
-                {
-
-                    txtNacionalidade.Focus();
-                    txtIsbn.Enabled          = false;
-                    txtAutor.Enabled         = false;
-                    txtEditora.Enabled       = false;   
-                    txtNome.Enabled          = false;
-                    txtClassificacao.Enabled = false;
-
-                    txtIsbn.Clear();
-                    txtAutor.Clear();
-                    txtEditora.Clear();
-                    txtNome.Clear();
-                    txtClassificacao.Clear();
-
-                    txtNacionalidade.Enabled = true;
-                }
-
-                if (cmbPesquisa.Text == "Classificacoes")
-                {
-
-                    txtClassificacao.Focus();
-                    txtIsbn.Enabled          = false;
-                    txtAutor.Enabled         = false;
-                    txtEditora.Enabled       = false;
-                    txtNome.Enabled          = false;
-                    txtNacionalidade.Enabled = false;
-
-                    txtIsbn.Clear();
-                    txtAutor.Clear();
-                    txtEditora.Clear();
-                    txtNome.Clear();
-                    txtNacionalidade.Clear();
+        }
 
 
-                    txtClassificacao.Enabled = true;
-                }
-            }
+        public void carregaFunc(string nomeFunc)
+        {
 
-
-            public void carrega(string teste) 
+            if (nomeFunc == "" || nomeFunc == null)
             {
 
-            
-            try
-            {
 
-                  dao.Conectar();
-                  DataTable dt = new DataTable();
-                  dt = dao.RetDataTable("SELECT * FROM Funcionarios WHERE Nome LIKE '" + teste + "%'");
-                  string[] matricula = new string[] { dt.Rows[0].ItemArray[0].ToString()};
-                  string[] name = new string[] { dt.Rows[0].ItemArray[1].ToString() };
-                  txtMat.Text = matricula[0].ToString();
-                  txtMatricula.Text = matricula[0].ToString();
+                txtMat.Text = "";
 
             }
-            catch (Exception ex)
+            else
+            {
+                try
+                {
+
+                    dao.Conectar();
+                    DataTable dt = new DataTable();
+                    dt = dao.RetDataTable("SELECT * FROM Funcionarios WHERE Nome LIKE '" + nomeFunc + "%'");
+                    string[] matricula = new string[] { dt.Rows[0].ItemArray[0].ToString() };
+                    string[] name = new string[] { dt.Rows[0].ItemArray[1].ToString() };
+                    txtMat.Text = matricula[0].ToString();
+                    txtMatricula.Text = matricula[0].ToString();
+
+                }
+                catch (Exception ex)
                 {
                     throw ex;
                 }
@@ -415,19 +401,35 @@ namespace livraria
                 {
                     Console.ReadLine();
                 }
-            }
 
+            }
+        }
 
         private void btnAtualiza_Click(object sender, EventArgs e)
-            {
-                limpar();
-                carrega_venda();
-            }
+        {
+            limpar();
+            carrega_venda();
+        }
 
         private void frmPai_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
 
+        }
+
+        private void txtVenda_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)8)
+            {
+                e.Handled = true;
+            }
+
+        }
+
+        private void btnNovo_Click(object sender, EventArgs e)
+        {
+            frmLivros objFrmLivros = new frmLivros();
+            objFrmLivros.ShowDialog();
         }
     }
 }
