@@ -42,12 +42,13 @@
             this.btnVenda = new System.Windows.Forms.Button();
             this.btnAtualiza = new System.Windows.Forms.Button();
             this.btnNovo = new System.Windows.Forms.Button();
+            this.txtVenda = new System.Windows.Forms.TextBox();
             this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
             this.pnlFundo = new System.Windows.Forms.Panel();
+            this.mTBValor = new System.Windows.Forms.MaskedTextBox();
             this.txtMatricula = new System.Windows.Forms.TextBox();
             this.lblMatricula = new System.Windows.Forms.Label();
             this.lblVenda = new System.Windows.Forms.Label();
-            this.txtVenda = new System.Windows.Forms.TextBox();
             this.gpbPesquisa = new System.Windows.Forms.GroupBox();
             this.lblEscolha = new System.Windows.Forms.Label();
             this.cmbPesquisa = new System.Windows.Forms.ComboBox();
@@ -254,6 +255,16 @@
             this.btnNovo.UseVisualStyleBackColor = true;
             this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
             // 
+            // txtVenda
+            // 
+            this.txtVenda.Location = new System.Drawing.Point(252, 186);
+            this.txtVenda.Name = "txtVenda";
+            this.txtVenda.Size = new System.Drawing.Size(100, 20);
+            this.txtVenda.TabIndex = 9;
+            this.tooldica.SetToolTip(this.txtVenda, "Somente números");
+            this.txtVenda.TextChanged += new System.EventHandler(this.txtVenda_TextChanged);
+            this.txtVenda.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtVenda_KeyPress);
+            // 
             // shapeContainer1
             // 
             this.shapeContainer1.Location = new System.Drawing.Point(0, 0);
@@ -265,6 +276,7 @@
             // 
             // pnlFundo
             // 
+            this.pnlFundo.Controls.Add(this.mTBValor);
             this.pnlFundo.Controls.Add(this.txtMatricula);
             this.pnlFundo.Controls.Add(this.lblMatricula);
             this.pnlFundo.Controls.Add(this.lblVenda);
@@ -291,6 +303,16 @@
             this.pnlFundo.Name = "pnlFundo";
             this.pnlFundo.Size = new System.Drawing.Size(1114, 264);
             this.pnlFundo.TabIndex = 15;
+            // 
+            // mTBValor
+            // 
+            this.mTBValor.Enabled = false;
+            this.mTBValor.Location = new System.Drawing.Point(252, 212);
+            this.mTBValor.Mask = "$0000,00";
+            this.mTBValor.Name = "mTBValor";
+            this.mTBValor.ReadOnly = true;
+            this.mTBValor.Size = new System.Drawing.Size(100, 20);
+            this.mTBValor.TabIndex = 105;
             // 
             // txtMatricula
             // 
@@ -321,16 +343,6 @@
             this.lblVenda.Size = new System.Drawing.Size(41, 13);
             this.lblVenda.TabIndex = 100;
             this.lblVenda.Text = "Venda:";
-            // 
-            // txtVenda
-            // 
-            this.txtVenda.Location = new System.Drawing.Point(252, 186);
-            this.txtVenda.Name = "txtVenda";
-            this.txtVenda.Size = new System.Drawing.Size(100, 20);
-            this.txtVenda.TabIndex = 9;
-            this.tooldica.SetToolTip(this.txtVenda, "Somente números");
-            this.txtVenda.TextChanged += new System.EventHandler(this.txtVenda_TextChanged);
-            this.txtVenda.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtVenda_KeyPress);
             // 
             // gpbPesquisa
             // 
@@ -489,6 +501,7 @@
             this.txtValor.Name = "txtValor";
             this.txtValor.Size = new System.Drawing.Size(100, 20);
             this.txtValor.TabIndex = 10;
+            this.txtValor.Visible = false;
             // 
             // txtEditora
             // 
@@ -713,6 +726,7 @@
         private System.Windows.Forms.Panel pnlBotao;
         private System.Windows.Forms.Label lblMat;
         private System.Windows.Forms.TextBox txtMat;
+        private System.Windows.Forms.MaskedTextBox mTBValor;
     }
 }
 
