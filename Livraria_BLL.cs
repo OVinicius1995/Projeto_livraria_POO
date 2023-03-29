@@ -246,7 +246,7 @@ namespace livraria
             try
             {
                 dao.Conectar();
-                string comando = "INSERT INTO vendas (funcionarios_Matricula,obras_ISBN,Qtde_Venda) VALUES ('" + dto.Matriculla + "','" + dto.Isbn + "','" + dto.Vendidos + "')";
+                string comando = "INSERT INTO venda (funcionarios_Matricula,obras_ISBN,Qtde_Venda) VALUES ('" + dto.Matriculla + "','" + dto.Isbn + "','" + dto.Vendidos + "')";
                 dao.ExecutarComandoSQL(comando);
             }
             catch (Exception ex)
@@ -433,7 +433,61 @@ namespace livraria
                 dt = dao.RetDataTable("SELECT * FROM obras WHERE ISBN = '" + Isbn + "'");
 
 
-                if (dt.Rows.Count == 1) { return true; }
+                if (dt.Rows.Count == 1 || dt.Rows.Count >= 1) { return true; }
+
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                Console.ReadLine();
+            }
+        }
+
+        public bool checaFuncionarios(string Nome)
+        {
+            try
+            {
+
+                dao.Conectar();
+                DataTable dt = new DataTable();
+                dt = dao.RetDataTable("SELECT * FROM Funcionarios WHERE Nome = '" + Nome + "'");
+
+
+                if (dt.Rows.Count == 1 || dt.Rows.Count >= 1) { return true; }
+
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                Console.ReadLine();
+            }
+        }
+
+        public bool checaClientes(string Nome)
+        {
+            try
+            {
+
+                dao.Conectar();
+                DataTable dt = new DataTable();
+                dt = dao.RetDataTable("SELECT Nome FROM Cliente WHERE Nome = '" + Nome + "'");
+
+
+                if (dt.Rows.Count == 1 || dt.Rows.Count >= 1) { return true; }
 
                 else
                 {

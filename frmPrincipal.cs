@@ -62,7 +62,7 @@ namespace livraria
         {
             carrega_venda();
 
-
+            btnVenda.Enabled = false;
             txtMatricula.Focus();
             txtPerfil.Text = livraria_DTO.getPegamat();
             string mat = livraria_DTO.getPegamat();
@@ -90,9 +90,10 @@ namespace livraria
 
         private void btnVenda_Click(object sender, EventArgs e)
         {
-            if (txtVenda.Text == "")
+            if (txtIsbn.Text == "" || txtVenda.Text == "")
             {
-                MessageBox.Show("Não foi especificado a quantidade de livros a ser vendido", "Quantidade", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                
+                MessageBox.Show("Não foi especificado a quantidade de livros a ser vendido, ou não foi selecionado o livro. Verifique!", "Venda de livros", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 limpar();
             }
 
@@ -182,6 +183,7 @@ namespace livraria
             {
 
                 limpar();
+                btnVenda.Enabled = false;
                 MessageBox.Show("Livro não selecionado ou valor alterado. Selecione o livro novamente por favor!", "Livro não selecionado ou valor alterado.", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             }

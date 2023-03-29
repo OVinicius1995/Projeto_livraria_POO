@@ -52,6 +52,10 @@ namespace livraria
         }
         private void btnSalva_Click(object sender, EventArgs e)
         {
+            if (txtNomeFuncionario.Text == "" || mtbCpfFuncionario.Text == "")
+            {
+                MessageBox.Show("Existem campos de preenchimento obrigatório vazio.", "Verifique", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            } else { 
             try
             {
                 dto.Data = dtData.Text;
@@ -69,14 +73,25 @@ namespace livraria
                 dto.Numero = txtNumeroFuncionario.Text;
                 dto.Logradouro = txtLogradouroFuncionario.Text;
                 dto.Cep = mtbCepFuncionario.Text;
-               
+
+                string ChecaNome = dto.Nome;
+                if (bll.checaFuncionarios(ChecaNome))
+                {
+
+                    MessageBox.Show("Este nome de usuário já existe e não pode ser repitido! Escolha outro por favor!", "Nome já existente.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtNomeFuncionario.Focus();
+
+                } else { 
+
                 bll.Inserir_Funcionarios(dto);
 
                 MessageBox.Show("O Funcionario(a): \" " + txtNomeFuncionario.Text + " \" foi cadastrado com sucesso!", "Cadastro", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 carrega_funcionario();
                 limpa_funcionarios();
+                }
             }
+           
             catch (Exception ex)
             {
                 throw ex;
@@ -86,7 +101,7 @@ namespace livraria
                 Console.ReadLine();
             }
         }
-
+       }
         private void btnSair_Click(object sender, EventArgs e)
         {
             Close();
