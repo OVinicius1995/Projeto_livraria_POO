@@ -126,7 +126,6 @@
             // 
             this.toolStripMenuItem1.Checked = true;
             this.toolStripMenuItem1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.toolStripMenuItem1.Enabled = false;
             this.toolStripMenuItem1.Font = new System.Drawing.Font("Showcard Gothic", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolStripMenuItem1.ForeColor = System.Drawing.SystemColors.ActiveCaption;
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
@@ -251,9 +250,9 @@
             this.btnNovo.TabIndex = 12;
             this.btnNovo.Text = "Novo";
             this.btnNovo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.tooldica.SetToolTip(this.btnNovo, "Limpa os dados para um novo registro");
+            this.tooldica.SetToolTip(this.btnNovo, "Cadastrar um novo livro");
             this.btnNovo.UseVisualStyleBackColor = true;
-            this.btnNovo.Click += new System.EventHandler(this.button1_Click);
+            this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
             // 
             // shapeContainer1
             // 
@@ -329,7 +328,9 @@
             this.txtVenda.Name = "txtVenda";
             this.txtVenda.Size = new System.Drawing.Size(100, 20);
             this.txtVenda.TabIndex = 9;
+            this.tooldica.SetToolTip(this.txtVenda, "Somente números");
             this.txtVenda.TextChanged += new System.EventHandler(this.txtVenda_TextChanged);
+            this.txtVenda.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtVenda_KeyPress);
             // 
             // gpbPesquisa
             // 
@@ -363,7 +364,7 @@
             "Editora",
             "Nacionalidade",
             "Classificacoes"});
-            this.cmbPesquisa.Location = new System.Drawing.Point(-3, 25);
+            this.cmbPesquisa.Location = new System.Drawing.Point(2, 25);
             this.cmbPesquisa.Name = "cmbPesquisa";
             this.cmbPesquisa.Size = new System.Drawing.Size(129, 21);
             this.cmbPesquisa.TabIndex = 7;
@@ -558,7 +559,7 @@
             this.txtMat.BackColor = System.Drawing.SystemColors.Control;
             this.txtMat.Enabled = false;
             this.txtMat.Font = new System.Drawing.Font("Monoid", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMat.Location = new System.Drawing.Point(464, 11);
+            this.txtMat.Location = new System.Drawing.Point(464, 13);
             this.txtMat.Multiline = true;
             this.txtMat.Name = "txtMat";
             this.txtMat.ReadOnly = true;
@@ -585,14 +586,13 @@
             this.txtPerfil.Cursor = System.Windows.Forms.Cursors.No;
             this.txtPerfil.Font = new System.Drawing.Font("Monotype Corsiva", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPerfil.ForeColor = System.Drawing.Color.PaleGreen;
-            this.txtPerfil.Location = new System.Drawing.Point(75, 9);
+            this.txtPerfil.Location = new System.Drawing.Point(75, 13);
             this.txtPerfil.Multiline = true;
             this.txtPerfil.Name = "txtPerfil";
             this.txtPerfil.ReadOnly = true;
             this.txtPerfil.ShortcutsEnabled = false;
             this.txtPerfil.Size = new System.Drawing.Size(296, 28);
             this.txtPerfil.TabIndex = 0;
-            this.txtPerfil.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lblNow
             // 
@@ -625,7 +625,6 @@
             this.pnlBotao.Name = "pnlBotao";
             this.pnlBotao.Size = new System.Drawing.Size(1114, 51);
             this.pnlBotao.TabIndex = 12;
-            this.pnlBotao.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlBotao_Paint);
             // 
             // frmPai
             // 
@@ -644,6 +643,7 @@
             this.Name = "frmPai";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "On The Book";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmPai_FormClosing);
             this.Load += new System.EventHandler(this.frmPai_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

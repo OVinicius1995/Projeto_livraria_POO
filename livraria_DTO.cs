@@ -226,6 +226,15 @@ namespace livraria
             set { nome = value; }
         }
 
+        private string login;
+
+        public string Login
+        {
+            get { return login; }
+            set { login = value; }
+        }
+
+
         private string id;
 
         public string Id
@@ -241,25 +250,18 @@ namespace livraria
             get { return endereco; }
             set { endereco = value; }
         }
-        //private string teste;
 
-        //public string Teste
-        //{
-        //    get { return teste; }
-        //    set { teste = value; }
-        //}
-
-        private static string teste;
+        private static string pegamat;
 
 
-        public static void setTeste(string varTeste)
+        public static void setPegamat(string varTeste)
         {
-            teste = varTeste;
+            pegamat = varTeste;
         }
 
-        public static string getTeste()
+        public static string getPegamat()
         {
-            return teste;
+            return pegamat;
         }
 
 

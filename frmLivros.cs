@@ -26,6 +26,7 @@ namespace livraria
         {
             try
             {
+
                 //dto.Cod_obra = 0;
                 dto.Isbn = mtbIsbn.Text;
                 dto.Autor = txtAutor.Text;
@@ -36,11 +37,23 @@ namespace livraria
                 dto.Quantidade = int.Parse(mtbQtde.Text);
                 dto.Valor = int.Parse(mskValor.Text);
 
-                bll.Inserir_Livros(dto);
-                MessageBox.Show("O Livro : " + "\" " + txtNomeLivro.Text + " \" " +" foi  cadastrado com sucesso!", "Cadastro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                string ChecaIsbn = dto.Isbn;
 
-                carrega_livros();
-                limpa_livros();
+                if (bll.checaLivros(ChecaIsbn)) { 
+                    
+                    MessageBox.Show("Este ISBN já existe! Verifique!","ISBN já existente.",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                    mtbIsbn.Focus();
+
+                } else {
+
+                    bll.Inserir_Livros(dto);
+                    MessageBox.Show("O Livro : " + "\" " + txtNomeLivro.Text + " \" " + " foi  cadastrado com sucesso!", "Cadastro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    carrega_livros();
+                    limpa_livros();
+
+                }
+
             }
             catch (Exception ex)
             {
