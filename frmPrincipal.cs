@@ -116,7 +116,7 @@ namespace livraria
 
                         txtValor.Text = resultado.ToString();
 
-                        bll.VenderLivros(dto);
+                        //bll.VenderLivros(dto);
 
                         MessageBox.Show("O livro: " + " \"" + dto.Nome + " \"" + " foi vendido", "Venda", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         limpar();
