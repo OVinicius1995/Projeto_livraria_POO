@@ -38,6 +38,7 @@ namespace livraria
                 dto.Valor = int.Parse(mskValor.Text);
 
                 string ChecaIsbn = dto.Isbn;
+
                 if (bll.checaLivros(ChecaIsbn)) { 
                     
                     MessageBox.Show("Este ISBN já existe! Verifique!","ISBN já existente.",MessageBoxButtons.OK,MessageBoxIcon.Warning);

@@ -62,7 +62,7 @@ namespace livraria
         {
             carrega_venda();
 
-
+            btnVenda.Enabled = false;
             txtMatricula.Focus();
             txtPerfil.Text = livraria_DTO.getPegamat();
             string mat = livraria_DTO.getPegamat();
@@ -90,9 +90,10 @@ namespace livraria
 
         private void btnVenda_Click(object sender, EventArgs e)
         {
-            if (txtVenda.Text == "")
+            if (txtIsbn.Text == "" || txtVenda.Text == "")
             {
-                MessageBox.Show("Não foi especificado a quantidade de livros a ser vendido", "Quantidade", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                
+                MessageBox.Show("Não foi especificado a quantidade de livros a ser vendido, ou não foi selecionado o livro. Verifique!", "Venda de livros", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 limpar();
             }
 
@@ -103,17 +104,17 @@ namespace livraria
                 {
                     try
                     {
-                        dto.Isbn = txtIsbn.Text;
-                        dto.Vendidos = int.Parse(txtVenda.Text);
-                        dto.Quantidade = int.Parse(txtQtde.Text);
-                        dto.Nome = txtNome.Text;
-                        dto.Valor = int.Parse(txtValor.Text);
+                        dto.Isbn        = txtIsbn.Text;
+                        dto.Vendidos    = int.Parse(txtVenda.Text);
+                        dto.Quantidade  = int.Parse(txtQtde.Text);
+                        dto.Nome        = txtNome.Text;
+                        dto.Valor       = int.Parse(txtValor.Text);
 
-                        var resultado = dto.Quantidade - dto.Venda;
+                        //var resultado = dto.Quantidade - dto.Venda;
 
-                        var resultado1 = dto.Venda * dto.Valor;
+                        var resultado = dto.Venda * dto.Valor;
 
-                        txtValor.Text = resultado1.ToString();
+                        txtValor.Text = resultado.ToString();
 
                         bll.VenderLivros(dto);
 
@@ -133,18 +134,17 @@ namespace livraria
 
                 try
                 {
-                    dto.Matriculla = int.Parse(txtMatricula.Text);
-                    dto.Isbn = txtIsbn.Text;
-                    dto.Vendidos = int.Parse(txtVenda.Text);
-                    dto.Quantidade = int.Parse(txtQtde.Text);
-                    dto.Nome = txtNome.Text;
-                    dto.Valor = int.Parse(txtValor.Text);
+                    dto.Matriculla  = int.Parse(txtMatricula.Text);
+                    dto.Isbn        = txtIsbn.Text;
+                    dto.Vendidos    = int.Parse(txtVenda.Text);
+                    dto.Quantidade  = int.Parse(txtQtde.Text);
+                    dto.Nome        = txtNome.Text;
+                    dto.Valor       = int.Parse(txtValor.Text);
 
-                    var resultado = dto.Quantidade - dto.Venda;
+                    //var resultado = dto.Quantidade - dto.Venda;
+                    var resultado = dto.Venda++;
 
-                    var resultado1 = dto.Venda++;
-
-                    txtValor.Text = resultado1.ToString();
+                    txtValor.Text = resultado.ToString();
                     bll.VenderLivros(dto);
 
                     MessageBox.Show("O livro: " + " \"" + dto.Nome + " \"" + " foi vendido", "Venda", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -183,6 +183,7 @@ namespace livraria
             {
 
                 limpar();
+                btnVenda.Enabled = false;
                 MessageBox.Show("Livro não selecionado ou valor alterado. Selecione o livro novamente por favor!", "Livro não selecionado ou valor alterado.", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             }
