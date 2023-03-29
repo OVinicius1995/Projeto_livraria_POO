@@ -389,6 +389,7 @@
             // 
             // txtMatricula
             // 
+            this.txtMatricula.Enabled = false;
             this.txtMatricula.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.txtMatricula.Location = new System.Drawing.Point(58, 8);
             this.txtMatricula.MaxLength = 45;
