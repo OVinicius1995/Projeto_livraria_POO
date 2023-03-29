@@ -118,7 +118,7 @@ namespace livraria
 
                         //bll.VenderLivros(dto);
 
-                        MessageBox.Show("O livro: " + " \"" + dto.Nome + " \"" + " foi vendido", "Venda", MessageBoxButtons.OK, MessageBoxIcon.Information);
+//                        MessageBox.Show("O livro: " + " \"" + dto.Nome + " \"" + " foi vendido", "Venda", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         limpar();
                         carrega_venda();
                     }
