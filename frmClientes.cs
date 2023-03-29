@@ -75,6 +75,12 @@ namespace livraria
 
         private void btnSalva_Click(object sender, EventArgs e)
         {
+            if (mtbCpf.Text == "" || txtNome.Text == "")
+            {
+                MessageBox.Show("Existem campo de preenchimento obrigatório vazios.", "Verifique!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                mtbCpf.Focus();
+            }
+             else { 
             try
             {               
                 dto.Cpf = mtbCpf.Text;
@@ -90,17 +96,47 @@ namespace livraria
                 dto.Cep = mtbCep.Text;
                 dto.Logradouro = txtLogradouro.Text;
 
-                MessageBox.Show("O cliente: \" " + txtNome.Text + " \" foi cadastrado com sucesso!", "Cadastro", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                limpa();
-                bll.Inserir_clientes(dto);
-                carrega();
+                string checaNome = dto.Nome;
+
+                    if (bll.checaClientes(checaNome))
+                    {
+
+                      var opcoes = MessageBox.Show("Este nome de cliente já existe na base de dados deseja prosseguir?", "Cliente já existente.", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+
+                        if (opcoes == System.Windows.Forms.DialogResult.Yes)
+                        {
+
+                            bll.Inserir_clientes(dto);
+
+                            MessageBox.Show("O cliente: \" " + txtNome.Text + " \" foi cadastrado com sucesso!", "Cadastro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            limpa();
+                            carrega();
+                        }
+                        else if (opcoes == System.Windows.Forms.DialogResult.No || opcoes == System.Windows.Forms.DialogResult.Cancel)
+                        {
+                            //MessageBox.Show("Eu apertei NO OU CANCEL!!!");
+                        }
+                    }
+
+
+                    else {
+
+                        bll.Inserir_clientes(dto);
+
+                        MessageBox.Show("O cliente: \" " + txtNome.Text + " \" foi cadastrado com sucesso!", "Cadastro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        
+                        limpa();
+                        carrega();
+                    }
+
             }
             catch (Exception ex)
             {
                 throw ex;
             }
+           
         }
-
+        }
         private void btnAlterar_Click(object sender, EventArgs e)
         {
 
