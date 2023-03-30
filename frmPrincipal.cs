@@ -438,5 +438,24 @@ namespace livraria
             frmLivros objFrmLivros = new frmLivros();
             objFrmLivros.ShowDialog();
         }
+
+        private void txtClienteVenda_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F2)
+            {
+                MessageBox.Show("TO ATi");
+
+                frmClientes objFrmClientes = new frmClientes();
+                objFrmClientes.ShowDialog();
+
+                txtClienteVenda.Text = livraria_DTO.getCliente().ToString();
+               // var buscaClientes = new frmClientes();
+
+              // MessageBox.Show("Teste" + dto.PegaCliente.ToString());
+
+                //txtClienteVenda.Text = buscaClientes;
+                //dtgVenda.DataSource = bll.Busca_Livros();
+            }
+        }
     }
 }

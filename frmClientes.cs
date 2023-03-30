@@ -55,7 +55,7 @@ namespace livraria
 
         }
 
-        private void dtgCliente_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        public void dtgCliente_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             mtbCodigo.Text = dtgCliente.Rows[e.RowIndex].Cells[0].Value.ToString();
             txtNome.Text = dtgCliente.Rows[e.RowIndex].Cells[1].Value.ToString();
@@ -70,8 +70,10 @@ namespace livraria
             txtBairro.Text = dtgCliente.Rows[e.RowIndex].Cells[10].Value.ToString();
             mtbCep.Text = dtgCliente.Rows[e.RowIndex].Cells[11].Value.ToString();
             txtLogradouro.Text = dtgCliente.Rows[e.RowIndex].Cells[12].Value.ToString();
-            
+
+            livraria_DTO.setCliente(dtgCliente.Rows[e.RowIndex].Cells[1].Value.ToString());
         }
+
 
         private void btnSalva_Click(object sender, EventArgs e)
         {

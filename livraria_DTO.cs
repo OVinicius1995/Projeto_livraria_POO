@@ -9,7 +9,8 @@ namespace livraria
     public partial class livraria_DTO
     {
         private static string usuario;
-  
+        private static string cliente;
+
 
         public static void setUsuario(string variavelUsuario)
         {
@@ -264,6 +265,14 @@ namespace livraria
             return pegamat;
         }
 
+        public static void setCliente(string variavelCliente)
+        {
+            cliente = variavelCliente;
+        }
 
+        public static string getCliente()
+        {
+            return cliente;
+        }
     }
 }

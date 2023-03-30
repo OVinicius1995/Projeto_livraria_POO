@@ -38,13 +38,15 @@
             this.livrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tooldica = new System.Windows.Forms.ToolTip(this.components);
             this.btnPesquisa = new System.Windows.Forms.Button();
-            this.btnSair = new System.Windows.Forms.Button();
+            this.txtVenda = new System.Windows.Forms.TextBox();
             this.btnVenda = new System.Windows.Forms.Button();
             this.btnAtualiza = new System.Windows.Forms.Button();
+            this.btnSair = new System.Windows.Forms.Button();
             this.btnNovo = new System.Windows.Forms.Button();
-            this.txtVenda = new System.Windows.Forms.TextBox();
             this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
             this.pnlFundo = new System.Windows.Forms.Panel();
+            this.txtClienteVenda = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.mTBValor = new System.Windows.Forms.MaskedTextBox();
             this.txtMatricula = new System.Windows.Forms.TextBox();
             this.lblMatricula = new System.Windows.Forms.Label();
@@ -74,19 +76,17 @@
             this.Timhoras = new System.Windows.Forms.Timer(this.components);
             this.pnlPerfil = new System.Windows.Forms.Panel();
             this.lblMat = new System.Windows.Forms.Label();
+            this.lblNow = new System.Windows.Forms.Label();
             this.txtMat = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.txtPerfil = new System.Windows.Forms.TextBox();
-            this.lblNow = new System.Windows.Forms.Label();
             this.pnlBotoes = new System.Windows.Forms.Panel();
-            this.pnlBotao = new System.Windows.Forms.Panel();
             this.menuStrip1.SuspendLayout();
             this.pnlFundo.SuspendLayout();
             this.gpbPesquisa.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgVenda)).BeginInit();
             this.pnlPerfil.SuspendLayout();
             this.pnlBotoes.SuspendLayout();
-            this.pnlBotao.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -101,15 +101,15 @@
             this.livrosToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(527, 113);
+            this.menuStrip1.Size = new System.Drawing.Size(559, 113);
             this.menuStrip1.TabIndex = 8;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // clientesToolStripMenuItem
             // 
             this.clientesToolStripMenuItem.AutoToolTip = true;
-            this.clientesToolStripMenuItem.Font = new System.Drawing.Font("Showcard Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clientesToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.clientesToolStripMenuItem.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clientesToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.clientesToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("clientesToolStripMenuItem.Image")));
             this.clientesToolStripMenuItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.clientesToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
@@ -117,7 +117,7 @@
             this.clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
             this.clientesToolStripMenuItem.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.clientesToolStripMenuItem.ShortcutKeyDisplayString = "";
-            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(156, 109);
+            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(181, 109);
             this.clientesToolStripMenuItem.Text = "Clientes           ";
             this.clientesToolStripMenuItem.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
             this.clientesToolStripMenuItem.ToolTipText = "Cadastra cliente";
@@ -137,12 +137,12 @@
             // 
             // funcionariosToolStripMenuItem
             // 
-            this.funcionariosToolStripMenuItem.Font = new System.Drawing.Font("Showcard Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.funcionariosToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.funcionariosToolStripMenuItem.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.funcionariosToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.funcionariosToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("funcionariosToolStripMenuItem.Image")));
             this.funcionariosToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.funcionariosToolStripMenuItem.Name = "funcionariosToolStripMenuItem";
-            this.funcionariosToolStripMenuItem.Size = new System.Drawing.Size(174, 109);
+            this.funcionariosToolStripMenuItem.Size = new System.Drawing.Size(178, 109);
             this.funcionariosToolStripMenuItem.Text = "Funcionarios";
             this.funcionariosToolStripMenuItem.Click += new System.EventHandler(this.funcionariosToolStripMenuItem_Click_1);
             // 
@@ -161,12 +161,12 @@
             // 
             // livrosToolStripMenuItem
             // 
-            this.livrosToolStripMenuItem.Font = new System.Drawing.Font("Showcard Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.livrosToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.livrosToolStripMenuItem.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.livrosToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.livrosToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("livrosToolStripMenuItem.Image")));
             this.livrosToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.livrosToolStripMenuItem.Name = "livrosToolStripMenuItem";
-            this.livrosToolStripMenuItem.Size = new System.Drawing.Size(131, 109);
+            this.livrosToolStripMenuItem.Size = new System.Drawing.Size(134, 109);
             this.livrosToolStripMenuItem.Text = "Livros";
             this.livrosToolStripMenuItem.Click += new System.EventHandler(this.livrosToolStripMenuItem_Click_1);
             // 
@@ -185,39 +185,38 @@
             // 
             this.btnPesquisa.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnPesquisa.BackgroundImage")));
             this.btnPesquisa.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnPesquisa.Location = new System.Drawing.Point(154, 9);
+            this.btnPesquisa.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPesquisa.Location = new System.Drawing.Point(225, 15);
             this.btnPesquisa.Name = "btnPesquisa";
-            this.btnPesquisa.Size = new System.Drawing.Size(89, 41);
+            this.btnPesquisa.Size = new System.Drawing.Size(126, 41);
             this.btnPesquisa.TabIndex = 8;
-            this.btnPesquisa.Text = "Pesquisa";
+            this.btnPesquisa.Text = "Pesquisar";
             this.btnPesquisa.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.tooldica.SetToolTip(this.btnPesquisa, "Realizar pesquisa de livros.");
             this.btnPesquisa.UseVisualStyleBackColor = true;
             this.btnPesquisa.Click += new System.EventHandler(this.btnPesquisa_Click);
             // 
-            // btnSair
+            // txtVenda
             // 
-            this.btnSair.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSair.BackgroundImage")));
-            this.btnSair.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnSair.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.btnSair.Location = new System.Drawing.Point(0, 3);
-            this.btnSair.Name = "btnSair";
-            this.btnSair.Size = new System.Drawing.Size(83, 46);
-            this.btnSair.TabIndex = 14;
-            this.btnSair.Text = "Sair";
-            this.btnSair.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.tooldica.SetToolTip(this.btnSair, "Sair da aplicação");
-            this.btnSair.UseVisualStyleBackColor = true;
-            this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
+            this.txtVenda.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtVenda.Location = new System.Drawing.Point(293, 200);
+            this.txtVenda.Name = "txtVenda";
+            this.txtVenda.Size = new System.Drawing.Size(100, 23);
+            this.txtVenda.TabIndex = 9;
+            this.tooldica.SetToolTip(this.txtVenda, "Somente números");
+            this.txtVenda.TextChanged += new System.EventHandler(this.txtVenda_TextChanged);
+            this.txtVenda.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtVenda_KeyPress);
             // 
             // btnVenda
             // 
-            this.btnVenda.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnVenda.BackgroundImage")));
             this.btnVenda.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnVenda.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.btnVenda.Location = new System.Drawing.Point(3, 7);
+            this.btnVenda.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVenda.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.btnVenda.Image = ((System.Drawing.Image)(resources.GetObject("btnVenda.Image")));
+            this.btnVenda.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnVenda.Location = new System.Drawing.Point(405, 3);
             this.btnVenda.Name = "btnVenda";
-            this.btnVenda.Size = new System.Drawing.Size(73, 37);
+            this.btnVenda.Size = new System.Drawing.Size(111, 47);
             this.btnVenda.TabIndex = 11;
             this.btnVenda.Text = "Venda";
             this.btnVenda.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -227,12 +226,14 @@
             // 
             // btnAtualiza
             // 
-            this.btnAtualiza.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnAtualiza.BackgroundImage")));
             this.btnAtualiza.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnAtualiza.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.btnAtualiza.Location = new System.Drawing.Point(285, 8);
+            this.btnAtualiza.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAtualiza.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.btnAtualiza.Image = ((System.Drawing.Image)(resources.GetObject("btnAtualiza.Image")));
+            this.btnAtualiza.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAtualiza.Location = new System.Drawing.Point(911, 3);
             this.btnAtualiza.Name = "btnAtualiza";
-            this.btnAtualiza.Size = new System.Drawing.Size(73, 37);
+            this.btnAtualiza.Size = new System.Drawing.Size(121, 47);
             this.btnAtualiza.TabIndex = 13;
             this.btnAtualiza.Text = "Atualiza";
             this.btnAtualiza.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -240,42 +241,53 @@
             this.btnAtualiza.UseVisualStyleBackColor = true;
             this.btnAtualiza.Click += new System.EventHandler(this.btnAtualiza_Click);
             // 
+            // btnSair
+            // 
+            this.btnSair.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnSair.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSair.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.btnSair.Image = ((System.Drawing.Image)(resources.GetObject("btnSair.Image")));
+            this.btnSair.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSair.Location = new System.Drawing.Point(7, 3);
+            this.btnSair.Name = "btnSair";
+            this.btnSair.Size = new System.Drawing.Size(96, 47);
+            this.btnSair.TabIndex = 14;
+            this.btnSair.Text = "Sair";
+            this.btnSair.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.tooldica.SetToolTip(this.btnSair, "Sair da aplicação");
+            this.btnSair.UseVisualStyleBackColor = true;
+            this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
+            // 
             // btnNovo
             // 
             this.btnNovo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnNovo.BackgroundImage")));
             this.btnNovo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnNovo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.btnNovo.Location = new System.Drawing.Point(144, 7);
+            this.btnNovo.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNovo.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.btnNovo.Location = new System.Drawing.Point(653, 4);
             this.btnNovo.Name = "btnNovo";
-            this.btnNovo.Size = new System.Drawing.Size(73, 37);
+            this.btnNovo.Size = new System.Drawing.Size(90, 47);
             this.btnNovo.TabIndex = 12;
             this.btnNovo.Text = "Novo";
             this.btnNovo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnNovo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.tooldica.SetToolTip(this.btnNovo, "Cadastrar um novo livro");
             this.btnNovo.UseVisualStyleBackColor = true;
             this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
-            // 
-            // txtVenda
-            // 
-            this.txtVenda.Location = new System.Drawing.Point(252, 186);
-            this.txtVenda.Name = "txtVenda";
-            this.txtVenda.Size = new System.Drawing.Size(100, 20);
-            this.txtVenda.TabIndex = 9;
-            this.tooldica.SetToolTip(this.txtVenda, "Somente números");
-            this.txtVenda.TextChanged += new System.EventHandler(this.txtVenda_TextChanged);
-            this.txtVenda.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtVenda_KeyPress);
             // 
             // shapeContainer1
             // 
             this.shapeContainer1.Location = new System.Drawing.Point(0, 0);
             this.shapeContainer1.Margin = new System.Windows.Forms.Padding(0);
             this.shapeContainer1.Name = "shapeContainer1";
-            this.shapeContainer1.Size = new System.Drawing.Size(1117, 434);
+            this.shapeContainer1.Size = new System.Drawing.Size(1037, 434);
             this.shapeContainer1.TabIndex = 13;
             this.shapeContainer1.TabStop = false;
             // 
             // pnlFundo
             // 
+            this.pnlFundo.Controls.Add(this.txtClienteVenda);
+            this.pnlFundo.Controls.Add(this.label1);
             this.pnlFundo.Controls.Add(this.mTBValor);
             this.pnlFundo.Controls.Add(this.txtMatricula);
             this.pnlFundo.Controls.Add(this.lblMatricula);
@@ -299,48 +311,78 @@
             this.pnlFundo.Controls.Add(this.txtIsbn);
             this.pnlFundo.Controls.Add(this.txtQtde);
             this.pnlFundo.Controls.Add(this.dtgVenda);
-            this.pnlFundo.Location = new System.Drawing.Point(3, 116);
+            this.pnlFundo.Location = new System.Drawing.Point(4, 116);
             this.pnlFundo.Name = "pnlFundo";
-            this.pnlFundo.Size = new System.Drawing.Size(1114, 264);
+            this.pnlFundo.Size = new System.Drawing.Size(1028, 262);
             this.pnlFundo.TabIndex = 15;
+            // 
+            // txtClienteVenda
+            // 
+            this.txtClienteVenda.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtClienteVenda.Location = new System.Drawing.Point(150, 68);
+            this.txtClienteVenda.Name = "txtClienteVenda";
+            this.txtClienteVenda.ReadOnly = true;
+            this.txtClienteVenda.ShortcutsEnabled = false;
+            this.txtClienteVenda.Size = new System.Drawing.Size(244, 23);
+            this.txtClienteVenda.TabIndex = 106;
+            this.txtClienteVenda.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtClienteVenda.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtClienteVenda_KeyDown);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.SystemColors.Control;
+            this.label1.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label1.Location = new System.Drawing.Point(8, 69);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(144, 19);
+            this.label1.TabIndex = 107;
+            this.label1.Text = "Selecione o cliente:";
             // 
             // mTBValor
             // 
             this.mTBValor.Enabled = false;
-            this.mTBValor.Location = new System.Drawing.Point(252, 212);
+            this.mTBValor.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mTBValor.Location = new System.Drawing.Point(291, 237);
             this.mTBValor.Mask = "$0000,00";
             this.mTBValor.Name = "mTBValor";
             this.mTBValor.ReadOnly = true;
-            this.mTBValor.Size = new System.Drawing.Size(100, 20);
+            this.mTBValor.Size = new System.Drawing.Size(100, 23);
             this.mTBValor.TabIndex = 105;
             // 
             // txtMatricula
             // 
-            this.txtMatricula.Location = new System.Drawing.Point(64, 88);
+            this.txtMatricula.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMatricula.Location = new System.Drawing.Point(84, 97);
             this.txtMatricula.Name = "txtMatricula";
             this.txtMatricula.ReadOnly = true;
             this.txtMatricula.ShortcutsEnabled = false;
-            this.txtMatricula.Size = new System.Drawing.Size(100, 20);
+            this.txtMatricula.Size = new System.Drawing.Size(100, 23);
             this.txtMatricula.TabIndex = 1;
             this.txtMatricula.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lblMatricula
             // 
             this.lblMatricula.AutoSize = true;
-            this.lblMatricula.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.lblMatricula.Location = new System.Drawing.Point(4, 91);
+            this.lblMatricula.BackColor = System.Drawing.SystemColors.Control;
+            this.lblMatricula.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMatricula.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.lblMatricula.Location = new System.Drawing.Point(4, 100);
             this.lblMatricula.Name = "lblMatricula";
-            this.lblMatricula.Size = new System.Drawing.Size(53, 13);
+            this.lblMatricula.Size = new System.Drawing.Size(81, 19);
             this.lblMatricula.TabIndex = 104;
             this.lblMatricula.Text = "Matricula:";
             // 
             // lblVenda
             // 
             this.lblVenda.AutoSize = true;
-            this.lblVenda.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.lblVenda.Location = new System.Drawing.Point(174, 193);
+            this.lblVenda.BackColor = System.Drawing.SystemColors.Control;
+            this.lblVenda.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVenda.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.lblVenda.Location = new System.Drawing.Point(226, 202);
             this.lblVenda.Name = "lblVenda";
-            this.lblVenda.Size = new System.Drawing.Size(41, 13);
+            this.lblVenda.Size = new System.Drawing.Size(58, 19);
             this.lblVenda.TabIndex = 100;
             this.lblVenda.Text = "Venda:";
             // 
@@ -349,18 +391,21 @@
             this.gpbPesquisa.Controls.Add(this.lblEscolha);
             this.gpbPesquisa.Controls.Add(this.btnPesquisa);
             this.gpbPesquisa.Controls.Add(this.cmbPesquisa);
-            this.gpbPesquisa.Location = new System.Drawing.Point(63, 3);
+            this.gpbPesquisa.Location = new System.Drawing.Point(8, -3);
             this.gpbPesquisa.Name = "gpbPesquisa";
-            this.gpbPesquisa.Size = new System.Drawing.Size(252, 54);
+            this.gpbPesquisa.Size = new System.Drawing.Size(385, 69);
             this.gpbPesquisa.TabIndex = 94;
             this.gpbPesquisa.TabStop = false;
             // 
             // lblEscolha
             // 
             this.lblEscolha.AutoSize = true;
-            this.lblEscolha.Location = new System.Drawing.Point(-3, 9);
+            this.lblEscolha.BackColor = System.Drawing.SystemColors.Control;
+            this.lblEscolha.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEscolha.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.lblEscolha.Location = new System.Drawing.Point(7, 9);
             this.lblEscolha.Name = "lblEscolha";
-            this.lblEscolha.Size = new System.Drawing.Size(129, 13);
+            this.lblEscolha.Size = new System.Drawing.Size(191, 19);
             this.lblEscolha.TabIndex = 9;
             this.lblEscolha.Text = "Escolha um tipo de busca";
             // 
@@ -368,7 +413,8 @@
             // 
             this.cmbPesquisa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.cmbPesquisa.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.cmbPesquisa.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.cmbPesquisa.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbPesquisa.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.cmbPesquisa.FormattingEnabled = true;
             this.cmbPesquisa.Items.AddRange(new object[] {
             "Nome",
@@ -376,164 +422,188 @@
             "Editora",
             "Nacionalidade",
             "Classificacoes"});
-            this.cmbPesquisa.Location = new System.Drawing.Point(2, 25);
+            this.cmbPesquisa.Location = new System.Drawing.Point(12, 34);
             this.cmbPesquisa.Name = "cmbPesquisa";
-            this.cmbPesquisa.Size = new System.Drawing.Size(129, 21);
+            this.cmbPesquisa.Size = new System.Drawing.Size(186, 23);
             this.cmbPesquisa.TabIndex = 7;
             this.cmbPesquisa.SelectedIndexChanged += new System.EventHandler(this.cmbPesquisa_SelectedIndexChanged);
             // 
             // lblEditora
             // 
             this.lblEditora.AutoSize = true;
-            this.lblEditora.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.lblEditora.Location = new System.Drawing.Point(1, 236);
+            this.lblEditora.BackColor = System.Drawing.SystemColors.Control;
+            this.lblEditora.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEditora.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.lblEditora.Location = new System.Drawing.Point(19, 239);
             this.lblEditora.Name = "lblEditora";
-            this.lblEditora.Size = new System.Drawing.Size(43, 13);
+            this.lblEditora.Size = new System.Drawing.Size(64, 19);
             this.lblEditora.TabIndex = 98;
             this.lblEditora.Text = "Editora:";
             // 
             // lblValo
             // 
             this.lblValo.AutoSize = true;
-            this.lblValo.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.lblValo.Location = new System.Drawing.Point(181, 219);
+            this.lblValo.BackColor = System.Drawing.SystemColors.Control;
+            this.lblValo.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblValo.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.lblValo.Location = new System.Drawing.Point(231, 239);
             this.lblValo.Name = "lblValo";
-            this.lblValo.Size = new System.Drawing.Size(34, 13);
+            this.lblValo.Size = new System.Drawing.Size(51, 19);
             this.lblValo.TabIndex = 97;
             this.lblValo.Text = "Valor:";
             // 
             // lblQtde
             // 
             this.lblQtde.AutoSize = true;
-            this.lblQtde.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.lblQtde.Location = new System.Drawing.Point(174, 161);
+            this.lblQtde.BackColor = System.Drawing.SystemColors.Control;
+            this.lblQtde.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblQtde.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.lblQtde.Location = new System.Drawing.Point(226, 170);
             this.lblQtde.Name = "lblQtde";
-            this.lblQtde.Size = new System.Drawing.Size(42, 13);
+            this.lblQtde.Size = new System.Drawing.Size(58, 19);
             this.lblQtde.TabIndex = 96;
             this.lblQtde.Text = "Q.t.d.e:";
             // 
             // lblClassificacao
             // 
             this.lblClassificacao.AutoSize = true;
-            this.lblClassificacao.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.lblClassificacao.Location = new System.Drawing.Point(174, 124);
+            this.lblClassificacao.BackColor = System.Drawing.SystemColors.Control;
+            this.lblClassificacao.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblClassificacao.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.lblClassificacao.Location = new System.Drawing.Point(185, 133);
             this.lblClassificacao.Name = "lblClassificacao";
-            this.lblClassificacao.Size = new System.Drawing.Size(72, 13);
+            this.lblClassificacao.Size = new System.Drawing.Size(108, 19);
             this.lblClassificacao.TabIndex = 95;
             this.lblClassificacao.Text = "Classificação:";
             // 
             // lblNacionalidade
             // 
             this.lblNacionalidade.AutoSize = true;
-            this.lblNacionalidade.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.lblNacionalidade.Location = new System.Drawing.Point(174, 88);
+            this.lblNacionalidade.BackColor = System.Drawing.SystemColors.Control;
+            this.lblNacionalidade.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNacionalidade.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.lblNacionalidade.Location = new System.Drawing.Point(187, 97);
             this.lblNacionalidade.Name = "lblNacionalidade";
-            this.lblNacionalidade.Size = new System.Drawing.Size(72, 13);
+            this.lblNacionalidade.Size = new System.Drawing.Size(115, 19);
             this.lblNacionalidade.TabIndex = 94;
-            this.lblNacionalidade.Text = "Ncionalidade:";
+            this.lblNacionalidade.Text = "Nacionalidade:";
             // 
             // lblAutor
             // 
             this.lblAutor.AutoSize = true;
-            this.lblAutor.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.lblAutor.Location = new System.Drawing.Point(1, 201);
+            this.lblAutor.BackColor = System.Drawing.SystemColors.Control;
+            this.lblAutor.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAutor.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.lblAutor.Location = new System.Drawing.Point(19, 204);
             this.lblAutor.Name = "lblAutor";
-            this.lblAutor.Size = new System.Drawing.Size(35, 13);
+            this.lblAutor.Size = new System.Drawing.Size(52, 19);
             this.lblAutor.TabIndex = 93;
             this.lblAutor.Text = "Autor:";
             // 
             // lblNome
             // 
             this.lblNome.AutoSize = true;
-            this.lblNome.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.lblNome.Location = new System.Drawing.Point(1, 164);
+            this.lblNome.BackColor = System.Drawing.SystemColors.Control;
+            this.lblNome.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNome.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.lblNome.Location = new System.Drawing.Point(19, 167);
             this.lblNome.Name = "lblNome";
-            this.lblNome.Size = new System.Drawing.Size(38, 13);
+            this.lblNome.Size = new System.Drawing.Size(55, 19);
             this.lblNome.TabIndex = 92;
             this.lblNome.Text = "Nome:";
             // 
             // lblIsbn
             // 
             this.lblIsbn.AutoSize = true;
-            this.lblIsbn.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.lblIsbn.Location = new System.Drawing.Point(4, 128);
+            this.lblIsbn.BackColor = System.Drawing.SystemColors.Control;
+            this.lblIsbn.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIsbn.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.lblIsbn.Location = new System.Drawing.Point(22, 131);
             this.lblIsbn.Name = "lblIsbn";
-            this.lblIsbn.Size = new System.Drawing.Size(35, 13);
+            this.lblIsbn.Size = new System.Drawing.Size(49, 19);
             this.lblIsbn.TabIndex = 91;
             this.lblIsbn.Text = "ISBN:";
             // 
             // txtNacionalidade
             // 
             this.txtNacionalidade.Enabled = false;
-            this.txtNacionalidade.Location = new System.Drawing.Point(252, 81);
+            this.txtNacionalidade.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNacionalidade.Location = new System.Drawing.Point(295, 96);
             this.txtNacionalidade.Name = "txtNacionalidade";
-            this.txtNacionalidade.Size = new System.Drawing.Size(100, 20);
+            this.txtNacionalidade.Size = new System.Drawing.Size(100, 23);
             this.txtNacionalidade.TabIndex = 6;
             // 
             // txtAutor
             // 
             this.txtAutor.Enabled = false;
-            this.txtAutor.Location = new System.Drawing.Point(63, 194);
+            this.txtAutor.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAutor.Location = new System.Drawing.Point(83, 203);
             this.txtAutor.Name = "txtAutor";
-            this.txtAutor.Size = new System.Drawing.Size(100, 20);
+            this.txtAutor.Size = new System.Drawing.Size(100, 23);
             this.txtAutor.TabIndex = 4;
             // 
             // txtNome
             // 
             this.txtNome.Enabled = false;
-            this.txtNome.Location = new System.Drawing.Point(63, 157);
+            this.txtNome.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNome.Location = new System.Drawing.Point(83, 166);
             this.txtNome.Name = "txtNome";
-            this.txtNome.Size = new System.Drawing.Size(100, 20);
+            this.txtNome.Size = new System.Drawing.Size(100, 23);
             this.txtNome.TabIndex = 3;
             // 
             // txtClassificacao
             // 
             this.txtClassificacao.Enabled = false;
-            this.txtClassificacao.Location = new System.Drawing.Point(252, 117);
+            this.txtClassificacao.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtClassificacao.Location = new System.Drawing.Point(293, 129);
             this.txtClassificacao.Name = "txtClassificacao";
-            this.txtClassificacao.Size = new System.Drawing.Size(100, 20);
+            this.txtClassificacao.Size = new System.Drawing.Size(100, 23);
             this.txtClassificacao.TabIndex = 7;
             // 
             // txtValor
             // 
             this.txtValor.Enabled = false;
-            this.txtValor.Location = new System.Drawing.Point(252, 212);
+            this.txtValor.Location = new System.Drawing.Point(301, 230);
             this.txtValor.Name = "txtValor";
-            this.txtValor.Size = new System.Drawing.Size(100, 20);
+            this.txtValor.Size = new System.Drawing.Size(82, 21);
             this.txtValor.TabIndex = 10;
             this.txtValor.Visible = false;
             // 
             // txtEditora
             // 
             this.txtEditora.Enabled = false;
-            this.txtEditora.Location = new System.Drawing.Point(63, 229);
+            this.txtEditora.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEditora.Location = new System.Drawing.Point(83, 238);
             this.txtEditora.Name = "txtEditora";
-            this.txtEditora.Size = new System.Drawing.Size(100, 20);
+            this.txtEditora.Size = new System.Drawing.Size(100, 23);
             this.txtEditora.TabIndex = 5;
             // 
             // txtIsbn
             // 
             this.txtIsbn.Enabled = false;
-            this.txtIsbn.Location = new System.Drawing.Point(63, 121);
+            this.txtIsbn.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtIsbn.Location = new System.Drawing.Point(83, 130);
             this.txtIsbn.Name = "txtIsbn";
-            this.txtIsbn.Size = new System.Drawing.Size(100, 20);
+            this.txtIsbn.Size = new System.Drawing.Size(100, 23);
             this.txtIsbn.TabIndex = 2;
             // 
             // txtQtde
             // 
             this.txtQtde.Enabled = false;
-            this.txtQtde.Location = new System.Drawing.Point(252, 154);
+            this.txtQtde.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtQtde.Location = new System.Drawing.Point(293, 167);
             this.txtQtde.Name = "txtQtde";
-            this.txtQtde.Size = new System.Drawing.Size(100, 20);
+            this.txtQtde.Size = new System.Drawing.Size(100, 23);
             this.txtQtde.TabIndex = 8;
             // 
             // dtgVenda
             // 
             this.dtgVenda.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.dtgVenda.BackgroundColor = System.Drawing.SystemColors.ControlLight;
             this.dtgVenda.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgVenda.Location = new System.Drawing.Point(358, 12);
+            this.dtgVenda.Location = new System.Drawing.Point(398, 12);
             this.dtgVenda.Name = "dtgVenda";
-            this.dtgVenda.Size = new System.Drawing.Size(742, 249);
+            this.dtgVenda.Size = new System.Drawing.Size(630, 247);
             this.dtgVenda.TabIndex = 0;
             this.dtgVenda.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgVenda_CellContentClick);
             // 
@@ -548,31 +618,44 @@
             // pnlPerfil
             // 
             this.pnlPerfil.Controls.Add(this.lblMat);
+            this.pnlPerfil.Controls.Add(this.lblNow);
             this.pnlPerfil.Controls.Add(this.txtMat);
             this.pnlPerfil.Controls.Add(this.label11);
             this.pnlPerfil.Controls.Add(this.txtPerfil);
-            this.pnlPerfil.Location = new System.Drawing.Point(530, 3);
+            this.pnlPerfil.Location = new System.Drawing.Point(562, 3);
             this.pnlPerfil.Name = "pnlPerfil";
-            this.pnlPerfil.Size = new System.Drawing.Size(584, 110);
+            this.pnlPerfil.Size = new System.Drawing.Size(470, 110);
             this.pnlPerfil.TabIndex = 16;
             // 
             // lblMat
             // 
             this.lblMat.AutoSize = true;
-            this.lblMat.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMat.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.lblMat.Location = new System.Drawing.Point(377, 12);
+            this.lblMat.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMat.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.lblMat.Location = new System.Drawing.Point(305, 19);
             this.lblMat.Name = "lblMat";
-            this.lblMat.Size = new System.Drawing.Size(82, 20);
+            this.lblMat.Size = new System.Drawing.Size(81, 19);
             this.lblMat.TabIndex = 4;
-            this.lblMat.Text = "Matricula";
+            this.lblMat.Text = "Matricula:";
+            // 
+            // lblNow
+            // 
+            this.lblNow.AutoSize = true;
+            this.lblNow.BackColor = System.Drawing.SystemColors.Control;
+            this.lblNow.Font = new System.Drawing.Font("Roboto Cn", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNow.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.lblNow.Location = new System.Drawing.Point(70, 60);
+            this.lblNow.Name = "lblNow";
+            this.lblNow.Size = new System.Drawing.Size(0, 33);
+            this.lblNow.TabIndex = 1;
             // 
             // txtMat
             // 
             this.txtMat.BackColor = System.Drawing.SystemColors.Control;
             this.txtMat.Enabled = false;
-            this.txtMat.Font = new System.Drawing.Font("Monoid", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMat.Location = new System.Drawing.Point(464, 13);
+            this.txtMat.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMat.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.txtMat.Location = new System.Drawing.Point(384, 14);
             this.txtMat.Multiline = true;
             this.txtMat.Name = "txtMat";
             this.txtMat.ReadOnly = true;
@@ -583,77 +666,59 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.label11.Location = new System.Drawing.Point(6, 14);
+            this.label11.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.label11.Location = new System.Drawing.Point(6, 17);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(60, 20);
+            this.label11.Size = new System.Drawing.Size(55, 19);
             this.label11.TabIndex = 2;
             this.label11.Text = "Nome:";
             // 
             // txtPerfil
             // 
             this.txtPerfil.BackColor = System.Drawing.SystemColors.Control;
-            this.txtPerfil.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtPerfil.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtPerfil.Cursor = System.Windows.Forms.Cursors.No;
-            this.txtPerfil.Font = new System.Drawing.Font("Monotype Corsiva", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPerfil.ForeColor = System.Drawing.Color.PaleGreen;
-            this.txtPerfil.Location = new System.Drawing.Point(75, 13);
+            this.txtPerfil.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPerfil.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.txtPerfil.Location = new System.Drawing.Point(64, 13);
             this.txtPerfil.Multiline = true;
             this.txtPerfil.Name = "txtPerfil";
             this.txtPerfil.ReadOnly = true;
             this.txtPerfil.ShortcutsEnabled = false;
-            this.txtPerfil.Size = new System.Drawing.Size(296, 28);
+            this.txtPerfil.Size = new System.Drawing.Size(229, 28);
             this.txtPerfil.TabIndex = 0;
-            // 
-            // lblNow
-            // 
-            this.lblNow.AutoSize = true;
-            this.lblNow.BackColor = System.Drawing.SystemColors.Control;
-            this.lblNow.Font = new System.Drawing.Font("Modern No. 20", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNow.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.lblNow.Location = new System.Drawing.Point(820, 10);
-            this.lblNow.Name = "lblNow";
-            this.lblNow.Size = new System.Drawing.Size(0, 34);
-            this.lblNow.TabIndex = 1;
             // 
             // pnlBotoes
             // 
             this.pnlBotoes.Controls.Add(this.btnNovo);
+            this.pnlBotoes.Controls.Add(this.btnSair);
             this.pnlBotoes.Controls.Add(this.btnAtualiza);
             this.pnlBotoes.Controls.Add(this.btnVenda);
-            this.pnlBotoes.Location = new System.Drawing.Point(361, 4);
+            this.pnlBotoes.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pnlBotoes.Location = new System.Drawing.Point(0, 381);
             this.pnlBotoes.Name = "pnlBotoes";
-            this.pnlBotoes.Size = new System.Drawing.Size(362, 45);
+            this.pnlBotoes.Size = new System.Drawing.Size(1037, 53);
             this.pnlBotoes.TabIndex = 107;
-            // 
-            // pnlBotao
-            // 
-            this.pnlBotao.Controls.Add(this.pnlBotoes);
-            this.pnlBotao.Controls.Add(this.lblNow);
-            this.pnlBotao.Controls.Add(this.btnSair);
-            this.pnlBotao.Location = new System.Drawing.Point(0, 382);
-            this.pnlBotao.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pnlBotao.Name = "pnlBotao";
-            this.pnlBotao.Size = new System.Drawing.Size(1114, 51);
-            this.pnlBotao.TabIndex = 12;
             // 
             // frmPai
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(1117, 434);
+            this.ClientSize = new System.Drawing.Size(1037, 434);
+            this.Controls.Add(this.pnlBotoes);
             this.Controls.Add(this.pnlPerfil);
             this.Controls.Add(this.pnlFundo);
-            this.Controls.Add(this.pnlBotao);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.shapeContainer1);
+            this.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.HelpButton = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MaximizeBox = false;
             this.Name = "frmPai";
+            this.RightToLeftLayout = true;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "On The Book";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmPai_FormClosing);
@@ -668,8 +733,6 @@
             this.pnlPerfil.ResumeLayout(false);
             this.pnlPerfil.PerformLayout();
             this.pnlBotoes.ResumeLayout(false);
-            this.pnlBotao.ResumeLayout(false);
-            this.pnlBotao.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -717,16 +780,17 @@
         private System.Windows.Forms.Panel pnlPerfil;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox txtPerfil;
-        private System.Windows.Forms.Button btnSair;
         private System.Windows.Forms.Label lblNow;
-        private System.Windows.Forms.Panel pnlBotoes;
-        private System.Windows.Forms.Button btnNovo;
-        private System.Windows.Forms.Button btnAtualiza;
-        private System.Windows.Forms.Button btnVenda;
-        private System.Windows.Forms.Panel pnlBotao;
         private System.Windows.Forms.Label lblMat;
         private System.Windows.Forms.TextBox txtMat;
         private System.Windows.Forms.MaskedTextBox mTBValor;
+        private System.Windows.Forms.Panel pnlBotoes;
+        private System.Windows.Forms.Button btnNovo;
+        private System.Windows.Forms.Button btnSair;
+        private System.Windows.Forms.Button btnAtualiza;
+        private System.Windows.Forms.Button btnVenda;
+        private System.Windows.Forms.TextBox txtClienteVenda;
+        private System.Windows.Forms.Label label1;
     }
 }
 
