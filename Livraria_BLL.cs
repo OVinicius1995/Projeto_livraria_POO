@@ -402,6 +402,7 @@ namespace livraria
             {
                 DataTable dt = new DataTable();
                 dao.Conectar();
+                //dt = dao.RetDataTable("SELECT * FROM Obras WHERE Quantidade != 0");
                 dt = dao.RetDataTable("SELECT * FROM Obras");
                 return dt;
             }
@@ -414,14 +415,6 @@ namespace livraria
                 Console.ReadLine();
             }
         }
-        //public void vender_livro(livraria_DTO dto)
-        //{
-
-        //    dao.Conectar();
-        //    string comando = "UPDATE Obras set Quantidade = '" + dto.Resultados + "'  where ISBN = " + dto.Isbn;
-        //    dao.ExecutarComandoSQL(comando);
-
-        //}
 
         public bool checaLivros(string Isbn)
         {
