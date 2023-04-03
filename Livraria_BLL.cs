@@ -415,14 +415,6 @@ namespace livraria
                 Console.ReadLine();
             }
         }
-        //public void vender_livro(livraria_DTO dto)
-        //{
-
-        //    dao.Conectar();
-        //    string comando = "UPDATE Obras set Quantidade = '" + dto.Resultados + "'  where ISBN = " + dto.Isbn;
-        //    dao.ExecutarComandoSQL(comando);
-
-        //}
 
         public bool checaLivros(string Isbn)
         {
@@ -486,33 +478,6 @@ namespace livraria
                 dao.Conectar();
                 DataTable dt = new DataTable();
                 dt = dao.RetDataTable("SELECT Nome FROM Cliente WHERE Nome = '" + Nome + "'");
-
-
-                if (dt.Rows.Count == 1 || dt.Rows.Count >= 1) { return true; }
-
-                else
-                {
-                    return false;
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                Console.ReadLine();
-            }
-        }
-
-        public bool checaQtdeLivros()
-        {
-            try
-            {
-
-                dao.Conectar();
-                DataTable dt = new DataTable();
-                dt = dao.RetDataTable("SELECT * FROM Obras WHERE Quantidade != 0");
 
 
                 if (dt.Rows.Count == 1 || dt.Rows.Count >= 1) { return true; }
