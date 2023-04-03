@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPai));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.clientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -598,11 +599,18 @@
             // 
             // dtgVenda
             // 
+            this.dtgVenda.AllowUserToAddRows = false;
+            this.dtgVenda.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtgVenda.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dtgVenda.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dtgVenda.BackgroundColor = System.Drawing.SystemColors.ControlLight;
             this.dtgVenda.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgVenda.Location = new System.Drawing.Point(398, 12);
+            this.dtgVenda.MultiSelect = false;
             this.dtgVenda.Name = "dtgVenda";
+            this.dtgVenda.ReadOnly = true;
+            this.dtgVenda.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dtgVenda.Size = new System.Drawing.Size(630, 247);
             this.dtgVenda.TabIndex = 0;
             this.dtgVenda.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgVenda_CellContentClick);

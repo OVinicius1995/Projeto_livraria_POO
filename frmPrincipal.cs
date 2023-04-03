@@ -72,7 +72,7 @@ namespace livraria
         public void carrega_venda()
         {
             dtgVenda.DataSource = bll.Busca_Livros();
-
+            checaValoresNegativos();
         }
 
         private void dtgVenda_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -86,7 +86,9 @@ namespace livraria
             txtClassificacao.Text = dtgVenda.Rows[e.RowIndex].Cells[5].Value.ToString();
             txtQtde.Text = dtgVenda.Rows[e.RowIndex].Cells[6].Value.ToString();
             txtValor.Text = dtgVenda.Rows[e.RowIndex].Cells[7].Value.ToString();
-             mTBValor.Text = dtgVenda.Rows[e.RowIndex].Cells[7].Value.ToString(); 
+            mTBValor.Text = dtgVenda.Rows[e.RowIndex].Cells[7].Value.ToString();
+            
+
         }
 
         private void btnVenda_Click(object sender, EventArgs e)
@@ -175,6 +177,7 @@ namespace livraria
             cmbPesquisa.Text = "";
 
             txtIsbn.Focus();
+            checaValoresNegativos();
         }
 
         private void txtVenda_TextChanged(object sender, EventArgs e)
@@ -236,7 +239,7 @@ namespace livraria
         private void timAtualiza_Tick(object sender, EventArgs e)
         {
             carrega_venda();
-
+            checaValoresNegativos();
         }
 
 
@@ -457,5 +460,14 @@ namespace livraria
                 //dtgVenda.DataSource = bll.Busca_Livros();
             }
         }
+
+        public void checaValoresNegativos()
+        {
+            foreach (DataGridViewRow row in dtgVenda.Rows)
+            {
+                if (Convert.ToInt32(row.Cells[6].Value) == 0) { MessageBox.Show("OK"); row.DefaultCellStyle.BackColor = Color.Red; }
+            }
+        }
+
     }
 }
