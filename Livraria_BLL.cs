@@ -101,6 +101,27 @@ namespace livraria
                 Console.ReadLine();
             }
         }
+
+
+        public DataTable Seleciona_clientes_Filtro(string bClientes)
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+                dao.Conectar();
+                dt = dao.RetDataTable("SELECT * from Cliente WHERE Nome LIKE '%" + bClientes + "%'");
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                Console.ReadLine();
+            }
+        }
+
         public void excluir_cliente(string codigo)
         {
             try
@@ -245,9 +266,21 @@ namespace livraria
 
             try
             {
-                dao.Conectar();
-                string comando = "INSERT INTO venda (funcionarios_Matricula,obras_ISBN,Qtde_Venda) VALUES ('" + dto.Matriculla + "','" + dto.Isbn + "','" + dto.Vendidos + "')";
-                dao.ExecutarComandoSQL(comando);
+                if (livraria_DTO.getCodCliente() == null)
+                {
+                    var codCli = "0";
+                    dao.Conectar();
+                    string comando = "INSERT INTO venda (funcionarios_Matricula,obras_ISBN,Qtde_Venda,cliente_Codigo_Cliente) VALUES ('" + dto.Matriculla + "','" + dto.Isbn + "','" + dto.Vendidos + "', '" + codCli + "')";
+                    dao.ExecutarComandoSQL(comando);
+                } else
+                {
+                    var codCli = livraria_DTO.getCodCliente();
+                    dao.Conectar();
+                    string comando = "INSERT INTO venda (funcionarios_Matricula,obras_ISBN,Qtde_Venda,cliente_Codigo_Cliente) VALUES ('" + dto.Matriculla + "','" + dto.Isbn + "','" + dto.Vendidos + "', '" + codCli + "')";
+                    dao.ExecutarComandoSQL(comando);
+                }
+
+
             }
             catch (Exception ex)
             {
@@ -278,6 +311,8 @@ namespace livraria
                 Console.ReadLine();
             }
         }
+
+
         public void Atualizar_Livros(livraria_DTO dto) //Metodo
         {
             try

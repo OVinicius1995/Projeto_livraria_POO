@@ -71,7 +71,7 @@ namespace livraria
             mtbCep.Text = dtgCliente.Rows[e.RowIndex].Cells[11].Value.ToString();
             txtLogradouro.Text = dtgCliente.Rows[e.RowIndex].Cells[12].Value.ToString();
 
-            livraria_DTO.setCliente(dtgCliente.Rows[e.RowIndex].Cells[1].Value.ToString());
+            
         }
 
 

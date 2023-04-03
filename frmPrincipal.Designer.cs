@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPai));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.clientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -82,6 +82,7 @@
             this.label11 = new System.Windows.Forms.Label();
             this.txtPerfil = new System.Windows.Forms.TextBox();
             this.pnlBotoes = new System.Windows.Forms.Panel();
+            this.btnBuscarClientes = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.pnlFundo.SuspendLayout();
             this.gpbPesquisa.SuspendLayout();
@@ -288,6 +289,7 @@
             // 
             // pnlFundo
             // 
+            this.pnlFundo.Controls.Add(this.btnBuscarClientes);
             this.pnlFundo.Controls.Add(this.txtClienteVenda);
             this.pnlFundo.Controls.Add(this.label1);
             this.pnlFundo.Controls.Add(this.mTBValor);
@@ -321,7 +323,7 @@
             // txtClienteVenda
             // 
             this.txtClienteVenda.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtClienteVenda.Location = new System.Drawing.Point(150, 68);
+            this.txtClienteVenda.Location = new System.Drawing.Point(150, 83);
             this.txtClienteVenda.Name = "txtClienteVenda";
             this.txtClienteVenda.ReadOnly = true;
             this.txtClienteVenda.ShortcutsEnabled = false;
@@ -336,7 +338,7 @@
             this.label1.BackColor = System.Drawing.SystemColors.Control;
             this.label1.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label1.Location = new System.Drawing.Point(8, 69);
+            this.label1.Location = new System.Drawing.Point(8, 84);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(144, 19);
             this.label1.TabIndex = 107;
@@ -611,8 +613,8 @@
             // 
             this.dtgVenda.AllowUserToAddRows = false;
             this.dtgVenda.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtgVenda.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtgVenda.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dtgVenda.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dtgVenda.BackgroundColor = System.Drawing.SystemColors.ControlLight;
             this.dtgVenda.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -719,6 +721,15 @@
             this.pnlBotoes.Size = new System.Drawing.Size(1037, 53);
             this.pnlBotoes.TabIndex = 107;
             // 
+            // btnBuscarClientes
+            // 
+            this.btnBuscarClientes.Image = ((System.Drawing.Image)(resources.GetObject("btnBuscarClientes.Image")));
+            this.btnBuscarClientes.Location = new System.Drawing.Point(308, 65);
+            this.btnBuscarClientes.Name = "btnBuscarClientes";
+            this.btnBuscarClientes.Size = new System.Drawing.Size(83, 54);
+            this.btnBuscarClientes.TabIndex = 108;
+            this.btnBuscarClientes.UseVisualStyleBackColor = true;
+            // 
             // frmPai
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -809,6 +820,7 @@
         private System.Windows.Forms.Button btnVenda;
         private System.Windows.Forms.TextBox txtClienteVenda;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnBuscarClientes;
     }
 }
 
