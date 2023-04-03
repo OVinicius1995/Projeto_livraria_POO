@@ -10,6 +10,7 @@ namespace livraria
     {
         private static string usuario;
         private static string cliente;
+        private static string codCliente;
 
 
         public static void setUsuario(string variavelUsuario)
@@ -273,6 +274,16 @@ namespace livraria
         public static string getCliente()
         {
             return cliente;
+        }
+
+        public static void setCodCliente(string variavelCadoCliente)
+        {
+            codCliente = variavelCadoCliente;
+        }
+
+        public static string getCodCliente()
+        {
+            return codCliente;
         }
     }
 }

@@ -60,14 +60,15 @@ namespace livraria
 
         public void frmPai_Load(object sender, EventArgs e)
         {
+            txtClienteVenda.Focus();
             carrega_venda();
-
+            txtVenda.Enabled = false;
             btnVenda.Enabled = false;
             txtMatricula.Focus();
             txtPerfil.Text = livraria_DTO.getPegamat();
             string mat = livraria_DTO.getPegamat();
             carregaFunc(mat);
-
+            
         }
         public void carrega_venda()
         {
@@ -77,6 +78,8 @@ namespace livraria
 
         private void dtgVenda_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            txtVenda.Enabled = true;
+            txtClienteVenda.Focus();
             //txtMatricula.Text = dtgVenda.Rows[e.RowIndex].Cells[0].Value.ToString();
             txtIsbn.Text = dtgVenda.Rows[e.RowIndex].Cells[0].Value.ToString();
             txtNome.Text = dtgVenda.Rows[e.RowIndex].Cells[1].Value.ToString();
@@ -97,39 +100,73 @@ namespace livraria
             {
 
                 MessageBox.Show("Não foi especificado a quantidade de livros a ser vendido, ou não foi selecionado o livro. Verifique!", "Venda de livros", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtVenda.Enabled = false;
                 limpar();
             }
 
-            else if (txtMatricula.Text == "")
+            else if (txtMatricula.Text == "" || txtClienteVenda.Text == "")
             {
-                var result = MessageBox.Show("A matricula não foi informada, deseja fazer a compra sem informar a matricula ?", "Iformação", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                var result = MessageBox.Show("A matricula ou o cliente não foram informados, deseja fazer a compra sem informar a matricula/cliente ?", "Iformação", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (result == System.Windows.Forms.DialogResult.Yes)
                 {
                     try
                     {
-                        dto.Isbn = txtIsbn.Text;
-                        dto.Vendidos = int.Parse(txtVenda.Text);
-                        dto.Quantidade = int.Parse(txtQtde.Text);
-                        dto.Nome = txtNome.Text;
-                        dto.Valor = int.Parse(txtValor.Text);
+                        if (txtMatricula.Text != "")
+                        {
 
-                        //var resultado = dto.Quantidade - dto.Venda;
+                            dto.Isbn = txtIsbn.Text;
+                            dto.Vendidos = int.Parse(txtVenda.Text);
+                            dto.Quantidade = int.Parse(txtQtde.Text);
+                            dto.Nome = txtNome.Text;
+                            dto.Valor = int.Parse(txtValor.Text);
+                            dto.Matriculla = int.Parse(txtMatricula.Text);
 
-                        var resultado = dto.Venda * dto.Valor;
+                            //var resultado = dto.Quantidade - dto.Venda;
 
-                        txtValor.Text = resultado.ToString();
+                            var resultado = dto.Venda * dto.Valor;
+
+                            txtValor.Text = resultado.ToString();
 
 
-                        bll.VenderLivros(dto);
+                            bll.VenderLivros(dto);
 
-                        MessageBox.Show("O livro: " + " \"" + dto.Nome + " \"" + " foi vendido", "Venda", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        limpar();
-                        carrega_venda();
+                            MessageBox.Show("O livro: " + " \"" + dto.Nome + " \"" + " foi vendido", "Venda", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            limpar();
+                            carrega_venda();
+                        }
+                        else
+                        {
+                            dto.Isbn = txtIsbn.Text;
+                            dto.Vendidos = int.Parse(txtVenda.Text);
+                            dto.Quantidade = int.Parse(txtQtde.Text);
+                            dto.Nome = txtNome.Text;
+                            dto.Valor = int.Parse(txtValor.Text);
+                            //dto.Matriculla = int.Parse(txtMatricula.Text);
+
+                            //var resultado = dto.Quantidade - dto.Venda;
+
+                            var resultado = dto.Venda * dto.Valor;
+
+                            txtValor.Text = resultado.ToString();
+
+
+                            bll.VenderLivros(dto);
+
+                            MessageBox.Show("O livro: " + " \"" + dto.Nome + " \"" + " foi vendido", "Venda", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            limpar();
+                            carrega_venda();
+                            checaValoresNegativos();
+                        }
+
                     }
                     catch (Exception ex)
                     {
                         throw ex;
                     }
+                }
+                else if (result == System.Windows.Forms.DialogResult.No)
+                {
+                    txtClienteVenda.Focus();
                 }
             }
 
@@ -155,6 +192,7 @@ namespace livraria
 
                     carrega_venda();
                     limpar();
+                    checaValoresNegativos();
                 }
                 catch (Exception ex)
                 {
@@ -175,7 +213,7 @@ namespace livraria
             txtValor.Clear();
             mTBValor.Clear();
             cmbPesquisa.Text = "";
-
+            txtClienteVenda.Clear();
             txtIsbn.Focus();
             checaValoresNegativos();
         }
@@ -190,6 +228,7 @@ namespace livraria
 
                 limpar();
                 btnVenda.Enabled = false;
+                txtVenda.Enabled = false;
 
                 MessageBox.Show("Livro não selecionado ou valor alterado. Selecione o livro novamente por favor!", "Livro não selecionado ou valor alterado.", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -214,7 +253,7 @@ namespace livraria
                 txtVenda.Text = "";
                 mTBValor.Text = "";
                 btnVenda.Enabled = false;
-
+                txtVenda.Enabled = false;
 
             }
             else
@@ -448,16 +487,18 @@ namespace livraria
             {
                 MessageBox.Show("TO ATi");
 
-                frmClientes objFrmClientes = new frmClientes();
+                frmBuscaClientes objFrmClientes = new frmBuscaClientes();
                 objFrmClientes.ShowDialog();
 
-                txtClienteVenda.Text = livraria_DTO.getCliente().ToString();
-               // var buscaClientes = new frmClientes();
+                if (livraria_DTO.getCliente() == null)
+                {
+                    txtClienteVenda.Text = "";
+                    txtClienteVenda.Focus();
+                } else
+                {
+                    txtClienteVenda.Text = livraria_DTO.getCliente().ToString();
 
-              // MessageBox.Show("Teste" + dto.PegaCliente.ToString());
-
-                //txtClienteVenda.Text = buscaClientes;
-                //dtgVenda.DataSource = bll.Busca_Livros();
+                }
             }
         }
 
