@@ -72,7 +72,7 @@ namespace livraria
         public void carrega_venda()
         {
             dtgVenda.DataSource = bll.Busca_Livros();
-
+            checaValoresNegativos();
         }
 
         private void dtgVenda_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -86,13 +86,16 @@ namespace livraria
             txtClassificacao.Text = dtgVenda.Rows[e.RowIndex].Cells[5].Value.ToString();
             txtQtde.Text = dtgVenda.Rows[e.RowIndex].Cells[6].Value.ToString();
             txtValor.Text = dtgVenda.Rows[e.RowIndex].Cells[7].Value.ToString();
+            mTBValor.Text = dtgVenda.Rows[e.RowIndex].Cells[7].Value.ToString();
+            
+
         }
 
         private void btnVenda_Click(object sender, EventArgs e)
         {
             if (txtIsbn.Text == "" || txtVenda.Text == "")
             {
-                
+
                 MessageBox.Show("Não foi especificado a quantidade de livros a ser vendido, ou não foi selecionado o livro. Verifique!", "Venda de livros", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 limpar();
             }
@@ -104,11 +107,11 @@ namespace livraria
                 {
                     try
                     {
-                        dto.Isbn        = txtIsbn.Text;
-                        dto.Vendidos    = int.Parse(txtVenda.Text);
-                        dto.Quantidade  = int.Parse(txtQtde.Text);
-                        dto.Nome        = txtNome.Text;
-                        dto.Valor       = int.Parse(txtValor.Text);
+                        dto.Isbn = txtIsbn.Text;
+                        dto.Vendidos = int.Parse(txtVenda.Text);
+                        dto.Quantidade = int.Parse(txtQtde.Text);
+                        dto.Nome = txtNome.Text;
+                        dto.Valor = int.Parse(txtValor.Text);
 
                         //var resultado = dto.Quantidade - dto.Venda;
 
@@ -116,7 +119,8 @@ namespace livraria
 
                         txtValor.Text = resultado.ToString();
 
-                        //bll.VenderLivros(dto);
+
+                        bll.VenderLivros(dto);
 
                         MessageBox.Show("O livro: " + " \"" + dto.Nome + " \"" + " foi vendido", "Venda", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         limpar();
@@ -134,12 +138,12 @@ namespace livraria
 
                 try
                 {
-                    dto.Matriculla  = int.Parse(txtMatricula.Text);
-                    dto.Isbn        = txtIsbn.Text;
-                    dto.Vendidos    = int.Parse(txtVenda.Text);
-                    dto.Quantidade  = int.Parse(txtQtde.Text);
-                    dto.Nome        = txtNome.Text;
-                    dto.Valor       = int.Parse(txtValor.Text);
+                    dto.Matriculla = int.Parse(txtMatricula.Text);
+                    dto.Isbn = txtIsbn.Text;
+                    dto.Vendidos = int.Parse(txtVenda.Text);
+                    dto.Quantidade = int.Parse(txtQtde.Text);
+                    dto.Nome = txtNome.Text;
+                    dto.Valor = int.Parse(txtValor.Text);
 
                     //var resultado = dto.Quantidade - dto.Venda;
                     var resultado = dto.Venda++;
@@ -169,9 +173,11 @@ namespace livraria
             txtQtde.Clear();
             txtVenda.Clear();
             txtValor.Clear();
+            mTBValor.Clear();
             cmbPesquisa.Text = "";
 
             txtIsbn.Focus();
+            checaValoresNegativos();
         }
 
         private void txtVenda_TextChanged(object sender, EventArgs e)
@@ -184,6 +190,7 @@ namespace livraria
 
                 limpar();
                 btnVenda.Enabled = false;
+
                 MessageBox.Show("Livro não selecionado ou valor alterado. Selecione o livro novamente por favor!", "Livro não selecionado ou valor alterado.", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             }
@@ -194,6 +201,8 @@ namespace livraria
                 MessageBox.Show("O valor de livros vendidos está maior do que o estoque, verifique!", "Selecione o livro novamente por favor!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtValor.Text = "";
                 txtVenda.Text = "";
+                mTBValor.Text = "";
+                
                 btnVenda.Enabled = false;
             }
 
@@ -203,26 +212,26 @@ namespace livraria
                 MessageBox.Show("Selecione um livro", "Selecione o livro novamente por favor!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtValor.Text = "";
                 txtVenda.Text = "";
+                mTBValor.Text = "";
                 btnVenda.Enabled = false;
 
 
             }
             else
             {
-
                 dto.Isbn = txtIsbn.Text;
                 dto.Venda = int.Parse(txtVenda.Text);
                 dto.Quantidade = int.Parse(txtQtde.Text);
                 dto.Nome = txtNome.Text;
                 dto.Valor = int.Parse(txtValor.Text);
 
-                var resultado = dto.Quantidade - dto.Venda;
+                var resultado = dto.Venda * dto.Valor;
 
-                var resultado1 = dto.Venda * dto.Valor;
-
-                txtValor.Text = resultado1.ToString();
+                txtValor.Text = resultado.ToString();
+                mTBValor.Text = resultado.ToString();
 
                 btnVenda.Enabled = true;
+                txtVenda.Enabled = true;
 
             }
         }
@@ -230,7 +239,7 @@ namespace livraria
         private void timAtualiza_Tick(object sender, EventArgs e)
         {
             carrega_venda();
-
+            checaValoresNegativos();
         }
 
 
@@ -432,5 +441,36 @@ namespace livraria
             frmLivros objFrmLivros = new frmLivros();
             objFrmLivros.ShowDialog();
         }
+
+        private void txtClienteVenda_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F2)
+            {
+                MessageBox.Show("TO ATi");
+
+                frmClientes objFrmClientes = new frmClientes();
+                objFrmClientes.ShowDialog();
+
+                txtClienteVenda.Text = livraria_DTO.getCliente().ToString();
+               // var buscaClientes = new frmClientes();
+
+              // MessageBox.Show("Teste" + dto.PegaCliente.ToString());
+
+                //txtClienteVenda.Text = buscaClientes;
+                //dtgVenda.DataSource = bll.Busca_Livros();
+            }
+        }
+
+        public void checaValoresNegativos()
+        {
+            foreach (DataGridViewRow row in dtgVenda.Rows)
+            {
+                if (Convert.ToInt32(row.Cells[6].Value) == 0) { 
+                    
+                    row.DefaultCellStyle.BackColor = Color.Red;
+                }
+            }
+        }
+
     }
 }
