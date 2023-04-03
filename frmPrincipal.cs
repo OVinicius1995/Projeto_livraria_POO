@@ -465,7 +465,10 @@ namespace livraria
         {
             foreach (DataGridViewRow row in dtgVenda.Rows)
             {
-                if (Convert.ToInt32(row.Cells[6].Value) == 0) { MessageBox.Show("OK"); row.DefaultCellStyle.BackColor = Color.Red; }
+                if (Convert.ToInt32(row.Cells[6].Value) == 0) { 
+                    
+                    row.DefaultCellStyle.BackColor = Color.Red;
+                }
             }
         }
 
