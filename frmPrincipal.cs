@@ -451,7 +451,16 @@ namespace livraria
                 frmClientes objFrmClientes = new frmClientes();
                 objFrmClientes.ShowDialog();
 
-                txtClienteVenda.Text = livraria_DTO.getCliente().ToString();
+                if (livraria_DTO.getCliente() == null)
+                {
+                    txtClienteVenda.Text = "";
+                    txtClienteVenda.Focus();
+                } else
+                {
+                    txtClienteVenda.Text = livraria_DTO.getCliente().ToString();
+                }
+
+
                // var buscaClientes = new frmClientes();
 
               // MessageBox.Show("Teste" + dto.PegaCliente.ToString());

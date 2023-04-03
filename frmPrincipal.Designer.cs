@@ -200,10 +200,11 @@
             // txtVenda
             // 
             this.txtVenda.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtVenda.Location = new System.Drawing.Point(293, 200);
+            this.txtVenda.Location = new System.Drawing.Point(293, 209);
             this.txtVenda.Name = "txtVenda";
             this.txtVenda.Size = new System.Drawing.Size(100, 23);
             this.txtVenda.TabIndex = 9;
+            this.txtVenda.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.tooldica.SetToolTip(this.txtVenda, "Somente números");
             this.txtVenda.TextChanged += new System.EventHandler(this.txtVenda_TextChanged);
             this.txtVenda.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtVenda_KeyPress);
@@ -267,7 +268,7 @@
             this.btnNovo.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.btnNovo.Location = new System.Drawing.Point(653, 4);
             this.btnNovo.Name = "btnNovo";
-            this.btnNovo.Size = new System.Drawing.Size(90, 47);
+            this.btnNovo.Size = new System.Drawing.Size(81, 47);
             this.btnNovo.TabIndex = 12;
             this.btnNovo.Text = "Novo";
             this.btnNovo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -324,7 +325,7 @@
             this.txtClienteVenda.Name = "txtClienteVenda";
             this.txtClienteVenda.ReadOnly = true;
             this.txtClienteVenda.ShortcutsEnabled = false;
-            this.txtClienteVenda.Size = new System.Drawing.Size(244, 23);
+            this.txtClienteVenda.Size = new System.Drawing.Size(152, 23);
             this.txtClienteVenda.TabIndex = 106;
             this.txtClienteVenda.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtClienteVenda.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtClienteVenda_KeyDown);
@@ -351,11 +352,12 @@
             this.mTBValor.ReadOnly = true;
             this.mTBValor.Size = new System.Drawing.Size(100, 23);
             this.mTBValor.TabIndex = 105;
+            this.mTBValor.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtMatricula
             // 
             this.txtMatricula.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMatricula.Location = new System.Drawing.Point(84, 97);
+            this.txtMatricula.Location = new System.Drawing.Point(84, 126);
             this.txtMatricula.Name = "txtMatricula";
             this.txtMatricula.ReadOnly = true;
             this.txtMatricula.ShortcutsEnabled = false;
@@ -369,7 +371,7 @@
             this.lblMatricula.BackColor = System.Drawing.SystemColors.Control;
             this.lblMatricula.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMatricula.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblMatricula.Location = new System.Drawing.Point(4, 100);
+            this.lblMatricula.Location = new System.Drawing.Point(4, 129);
             this.lblMatricula.Name = "lblMatricula";
             this.lblMatricula.Size = new System.Drawing.Size(81, 19);
             this.lblMatricula.TabIndex = 104;
@@ -381,7 +383,7 @@
             this.lblVenda.BackColor = System.Drawing.SystemColors.Control;
             this.lblVenda.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblVenda.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblVenda.Location = new System.Drawing.Point(226, 202);
+            this.lblVenda.Location = new System.Drawing.Point(226, 211);
             this.lblVenda.Name = "lblVenda";
             this.lblVenda.Size = new System.Drawing.Size(58, 19);
             this.lblVenda.TabIndex = 100;
@@ -459,7 +461,7 @@
             this.lblQtde.BackColor = System.Drawing.SystemColors.Control;
             this.lblQtde.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblQtde.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblQtde.Location = new System.Drawing.Point(226, 170);
+            this.lblQtde.Location = new System.Drawing.Point(226, 184);
             this.lblQtde.Name = "lblQtde";
             this.lblQtde.Size = new System.Drawing.Size(58, 19);
             this.lblQtde.TabIndex = 96;
@@ -471,7 +473,7 @@
             this.lblClassificacao.BackColor = System.Drawing.SystemColors.Control;
             this.lblClassificacao.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblClassificacao.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblClassificacao.Location = new System.Drawing.Point(185, 133);
+            this.lblClassificacao.Location = new System.Drawing.Point(185, 157);
             this.lblClassificacao.Name = "lblClassificacao";
             this.lblClassificacao.Size = new System.Drawing.Size(108, 19);
             this.lblClassificacao.TabIndex = 95;
@@ -483,7 +485,7 @@
             this.lblNacionalidade.BackColor = System.Drawing.SystemColors.Control;
             this.lblNacionalidade.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNacionalidade.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblNacionalidade.Location = new System.Drawing.Point(187, 97);
+            this.lblNacionalidade.Location = new System.Drawing.Point(183, 126);
             this.lblNacionalidade.Name = "lblNacionalidade";
             this.lblNacionalidade.Size = new System.Drawing.Size(115, 19);
             this.lblNacionalidade.TabIndex = 94;
@@ -495,7 +497,7 @@
             this.lblAutor.BackColor = System.Drawing.SystemColors.Control;
             this.lblAutor.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAutor.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblAutor.Location = new System.Drawing.Point(19, 204);
+            this.lblAutor.Location = new System.Drawing.Point(19, 213);
             this.lblAutor.Name = "lblAutor";
             this.lblAutor.Size = new System.Drawing.Size(52, 19);
             this.lblAutor.TabIndex = 93;
@@ -507,7 +509,7 @@
             this.lblNome.BackColor = System.Drawing.SystemColors.Control;
             this.lblNome.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNome.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblNome.Location = new System.Drawing.Point(19, 167);
+            this.lblNome.Location = new System.Drawing.Point(19, 186);
             this.lblNome.Name = "lblNome";
             this.lblNome.Size = new System.Drawing.Size(55, 19);
             this.lblNome.TabIndex = 92;
@@ -519,7 +521,7 @@
             this.lblIsbn.BackColor = System.Drawing.SystemColors.Control;
             this.lblIsbn.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblIsbn.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblIsbn.Location = new System.Drawing.Point(22, 131);
+            this.lblIsbn.Location = new System.Drawing.Point(22, 159);
             this.lblIsbn.Name = "lblIsbn";
             this.lblIsbn.Size = new System.Drawing.Size(49, 19);
             this.lblIsbn.TabIndex = 91;
@@ -529,44 +531,49 @@
             // 
             this.txtNacionalidade.Enabled = false;
             this.txtNacionalidade.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNacionalidade.Location = new System.Drawing.Point(295, 96);
+            this.txtNacionalidade.Location = new System.Drawing.Point(296, 125);
             this.txtNacionalidade.Name = "txtNacionalidade";
             this.txtNacionalidade.Size = new System.Drawing.Size(100, 23);
             this.txtNacionalidade.TabIndex = 6;
+            this.txtNacionalidade.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtAutor
             // 
             this.txtAutor.Enabled = false;
             this.txtAutor.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAutor.Location = new System.Drawing.Point(83, 203);
+            this.txtAutor.Location = new System.Drawing.Point(83, 212);
             this.txtAutor.Name = "txtAutor";
             this.txtAutor.Size = new System.Drawing.Size(100, 23);
             this.txtAutor.TabIndex = 4;
+            this.txtAutor.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtNome
             // 
             this.txtNome.Enabled = false;
             this.txtNome.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNome.Location = new System.Drawing.Point(83, 166);
+            this.txtNome.Location = new System.Drawing.Point(83, 185);
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(100, 23);
             this.txtNome.TabIndex = 3;
+            this.txtNome.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtClassificacao
             // 
             this.txtClassificacao.Enabled = false;
             this.txtClassificacao.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtClassificacao.Location = new System.Drawing.Point(293, 129);
+            this.txtClassificacao.Location = new System.Drawing.Point(293, 153);
             this.txtClassificacao.Name = "txtClassificacao";
             this.txtClassificacao.Size = new System.Drawing.Size(100, 23);
             this.txtClassificacao.TabIndex = 7;
+            this.txtClassificacao.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtValor
             // 
             this.txtValor.Enabled = false;
-            this.txtValor.Location = new System.Drawing.Point(301, 230);
+            this.txtValor.Font = new System.Drawing.Font("Roboto", 1.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtValor.Location = new System.Drawing.Point(301, 246);
             this.txtValor.Name = "txtValor";
-            this.txtValor.Size = new System.Drawing.Size(82, 21);
+            this.txtValor.Size = new System.Drawing.Size(82, 10);
             this.txtValor.TabIndex = 10;
             this.txtValor.Visible = false;
             // 
@@ -578,24 +585,27 @@
             this.txtEditora.Name = "txtEditora";
             this.txtEditora.Size = new System.Drawing.Size(100, 23);
             this.txtEditora.TabIndex = 5;
+            this.txtEditora.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtIsbn
             // 
             this.txtIsbn.Enabled = false;
             this.txtIsbn.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtIsbn.Location = new System.Drawing.Point(83, 130);
+            this.txtIsbn.Location = new System.Drawing.Point(83, 158);
             this.txtIsbn.Name = "txtIsbn";
             this.txtIsbn.Size = new System.Drawing.Size(100, 23);
             this.txtIsbn.TabIndex = 2;
+            this.txtIsbn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtQtde
             // 
             this.txtQtde.Enabled = false;
             this.txtQtde.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtQtde.Location = new System.Drawing.Point(293, 167);
+            this.txtQtde.Location = new System.Drawing.Point(293, 181);
             this.txtQtde.Name = "txtQtde";
             this.txtQtde.Size = new System.Drawing.Size(100, 23);
             this.txtQtde.TabIndex = 8;
+            this.txtQtde.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // dtgVenda
             // 
