@@ -217,18 +217,6 @@ namespace livraria
             mTBValor.Clear();
             cmbPesquisa.Text = "";
             txtClienteVenda.Clear();
-
-            txtIsbn.Enabled    = false;
-            txtNome.Enabled    = false;
-            txtAutor.Enabled   = false;
-            txtEditora.Enabled = false;
-            txtNacionalidade.Enabled = false;
-            txtClassificacao.Enabled = false;
-            txtQtde.Enabled = false;
-            txtVenda.Enabled = false;
-            txtValor.Enabled = false;
-            mTBValor.Enabled = false;
-            
             txtClienteVenda.Focus();
             checaValoresNegativos();
         }
