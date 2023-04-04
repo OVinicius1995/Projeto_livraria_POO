@@ -31,6 +31,7 @@ namespace livraria
             horas.Tick += new EventHandler(Timhoras_Tick);
             horas.Interval = 1; //tempo em milesimos
             horas.Start();
+            
         }
 
         private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -44,6 +45,7 @@ namespace livraria
         private void btnSair_Click(object sender, EventArgs e)
         {
             Application.Exit();
+
         }
 
         private void livrosToolStripMenuItem_Click_1(object sender, EventArgs e)
@@ -60,11 +62,11 @@ namespace livraria
 
         public void frmPai_Load(object sender, EventArgs e)
         {
-            txtClienteVenda.Focus();
+           txtClienteVenda.Focus();
+                    
             carrega_venda();
             txtVenda.Enabled = false;
             btnVenda.Enabled = false;
-            txtMatricula.Focus();
             txtPerfil.Text = livraria_DTO.getPegamat();
             string mat = livraria_DTO.getPegamat();
             carregaFunc(mat);
@@ -72,6 +74,7 @@ namespace livraria
         }
         public void carrega_venda()
         {
+
             dtgVenda.DataSource = bll.Busca_Livros();
             checaValoresNegativos();
         }
@@ -214,7 +217,7 @@ namespace livraria
             mTBValor.Clear();
             cmbPesquisa.Text = "";
             txtClienteVenda.Clear();
-            txtIsbn.Focus();
+            txtClienteVenda.Focus();
             checaValoresNegativos();
         }
 
@@ -483,10 +486,10 @@ namespace livraria
 
         private void txtClienteVenda_KeyDown(object sender, KeyEventArgs e)
         {
+
             if (e.KeyCode == Keys.F2)
             {
-                MessageBox.Show("TO ATi");
-
+                txtClienteVenda.Text = "";
                 frmBuscaClientes objFrmClientes = new frmBuscaClientes();
                 objFrmClientes.ShowDialog();
 
@@ -513,5 +516,30 @@ namespace livraria
             }
         }
 
+        private void btnBuscarClientes_Click(object sender, EventArgs e)
+        {
+
+            frmBuscaClientes objFrmClientes = new frmBuscaClientes();
+            objFrmClientes.ShowDialog();
+
+            if (livraria_DTO.getCliente() == null)
+            {
+                txtClienteVenda.Text = "";
+                txtClienteVenda.Select();
+            }
+            else
+            {
+                txtClienteVenda.Text = livraria_DTO.getCliente().ToString();
+
+            }
+        }
+
+        private void frmPai_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+            frmLogin objRetornaLogin = new frmLogin();
+            objRetornaLogin.ShowDialog();
+            
+        }
     }
 }

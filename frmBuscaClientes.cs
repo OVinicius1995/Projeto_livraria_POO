@@ -28,6 +28,8 @@ namespace livraria
             if (e.KeyCode == Keys.Escape)
             {
                 this.Close();
+                livraria_DTO.setCliente("");
+                livraria_DTO.setCodCliente("");
             }
         }
 

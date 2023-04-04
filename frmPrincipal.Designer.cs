@@ -204,7 +204,7 @@
             this.txtVenda.Location = new System.Drawing.Point(293, 209);
             this.txtVenda.Name = "txtVenda";
             this.txtVenda.Size = new System.Drawing.Size(100, 23);
-            this.txtVenda.TabIndex = 9;
+            this.txtVenda.TabIndex = 10;
             this.txtVenda.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.tooldica.SetToolTip(this.txtVenda, "Somente números");
             this.txtVenda.TextChanged += new System.EventHandler(this.txtVenda_TextChanged);
@@ -220,7 +220,7 @@
             this.btnVenda.Location = new System.Drawing.Point(405, 3);
             this.btnVenda.Name = "btnVenda";
             this.btnVenda.Size = new System.Drawing.Size(111, 47);
-            this.btnVenda.TabIndex = 11;
+            this.btnVenda.TabIndex = 15;
             this.btnVenda.Text = "Venda";
             this.btnVenda.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.tooldica.SetToolTip(this.btnVenda, "Realiza venda");
@@ -237,7 +237,7 @@
             this.btnAtualiza.Location = new System.Drawing.Point(911, 3);
             this.btnAtualiza.Name = "btnAtualiza";
             this.btnAtualiza.Size = new System.Drawing.Size(121, 47);
-            this.btnAtualiza.TabIndex = 13;
+            this.btnAtualiza.TabIndex = 17;
             this.btnAtualiza.Text = "Atualiza";
             this.btnAtualiza.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.tooldica.SetToolTip(this.btnAtualiza, "Os dados sao atualizados a cada 20 segundos");
@@ -270,7 +270,7 @@
             this.btnNovo.Location = new System.Drawing.Point(653, 4);
             this.btnNovo.Name = "btnNovo";
             this.btnNovo.Size = new System.Drawing.Size(81, 47);
-            this.btnNovo.TabIndex = 12;
+            this.btnNovo.TabIndex = 16;
             this.btnNovo.Text = "Novo";
             this.btnNovo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnNovo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -325,11 +325,10 @@
             this.txtClienteVenda.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtClienteVenda.Location = new System.Drawing.Point(150, 83);
             this.txtClienteVenda.Name = "txtClienteVenda";
-            this.txtClienteVenda.ReadOnly = true;
-            this.txtClienteVenda.ShortcutsEnabled = false;
             this.txtClienteVenda.Size = new System.Drawing.Size(152, 23);
-            this.txtClienteVenda.TabIndex = 106;
+            this.txtClienteVenda.TabIndex = 1;
             this.txtClienteVenda.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tooldica.SetToolTip(this.txtClienteVenda, "Tecle F2 para abrir a lista de clientes.");
             this.txtClienteVenda.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtClienteVenda_KeyDown);
             // 
             // label1
@@ -353,7 +352,7 @@
             this.mTBValor.Name = "mTBValor";
             this.mTBValor.ReadOnly = true;
             this.mTBValor.Size = new System.Drawing.Size(100, 23);
-            this.mTBValor.TabIndex = 105;
+            this.mTBValor.TabIndex = 13;
             this.mTBValor.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtMatricula
@@ -364,7 +363,7 @@
             this.txtMatricula.ReadOnly = true;
             this.txtMatricula.ShortcutsEnabled = false;
             this.txtMatricula.Size = new System.Drawing.Size(100, 23);
-            this.txtMatricula.TabIndex = 1;
+            this.txtMatricula.TabIndex = 3;
             this.txtMatricula.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lblMatricula
@@ -430,7 +429,7 @@
             this.cmbPesquisa.Location = new System.Drawing.Point(12, 34);
             this.cmbPesquisa.Name = "cmbPesquisa";
             this.cmbPesquisa.Size = new System.Drawing.Size(186, 23);
-            this.cmbPesquisa.TabIndex = 7;
+            this.cmbPesquisa.TabIndex = 18;
             this.cmbPesquisa.SelectedIndexChanged += new System.EventHandler(this.cmbPesquisa_SelectedIndexChanged);
             // 
             // lblEditora
@@ -536,7 +535,7 @@
             this.txtNacionalidade.Location = new System.Drawing.Point(296, 125);
             this.txtNacionalidade.Name = "txtNacionalidade";
             this.txtNacionalidade.Size = new System.Drawing.Size(100, 23);
-            this.txtNacionalidade.TabIndex = 6;
+            this.txtNacionalidade.TabIndex = 4;
             this.txtNacionalidade.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtAutor
@@ -546,7 +545,7 @@
             this.txtAutor.Location = new System.Drawing.Point(83, 212);
             this.txtAutor.Name = "txtAutor";
             this.txtAutor.Size = new System.Drawing.Size(100, 23);
-            this.txtAutor.TabIndex = 4;
+            this.txtAutor.TabIndex = 9;
             this.txtAutor.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtNome
@@ -556,7 +555,7 @@
             this.txtNome.Location = new System.Drawing.Point(83, 185);
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(100, 23);
-            this.txtNome.TabIndex = 3;
+            this.txtNome.TabIndex = 7;
             this.txtNome.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtClassificacao
@@ -566,7 +565,7 @@
             this.txtClassificacao.Location = new System.Drawing.Point(293, 153);
             this.txtClassificacao.Name = "txtClassificacao";
             this.txtClassificacao.Size = new System.Drawing.Size(100, 23);
-            this.txtClassificacao.TabIndex = 7;
+            this.txtClassificacao.TabIndex = 6;
             this.txtClassificacao.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtValor
@@ -586,7 +585,7 @@
             this.txtEditora.Location = new System.Drawing.Point(83, 238);
             this.txtEditora.Name = "txtEditora";
             this.txtEditora.Size = new System.Drawing.Size(100, 23);
-            this.txtEditora.TabIndex = 5;
+            this.txtEditora.TabIndex = 11;
             this.txtEditora.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtIsbn
@@ -596,7 +595,7 @@
             this.txtIsbn.Location = new System.Drawing.Point(83, 158);
             this.txtIsbn.Name = "txtIsbn";
             this.txtIsbn.Size = new System.Drawing.Size(100, 23);
-            this.txtIsbn.TabIndex = 2;
+            this.txtIsbn.TabIndex = 5;
             this.txtIsbn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtQtde
@@ -625,6 +624,7 @@
             this.dtgVenda.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dtgVenda.Size = new System.Drawing.Size(630, 247);
             this.dtgVenda.TabIndex = 0;
+            this.dtgVenda.TabStop = false;
             this.dtgVenda.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgVenda_CellContentClick);
             // 
             // timAtualiza
@@ -681,6 +681,7 @@
             this.txtMat.ReadOnly = true;
             this.txtMat.Size = new System.Drawing.Size(80, 28);
             this.txtMat.TabIndex = 3;
+            this.txtMat.TabStop = false;
             this.txtMat.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label11
@@ -708,6 +709,7 @@
             this.txtPerfil.ShortcutsEnabled = false;
             this.txtPerfil.Size = new System.Drawing.Size(229, 28);
             this.txtPerfil.TabIndex = 0;
+            this.txtPerfil.TabStop = false;
             // 
             // pnlBotoes
             // 
@@ -727,8 +729,10 @@
             this.btnBuscarClientes.Location = new System.Drawing.Point(308, 65);
             this.btnBuscarClientes.Name = "btnBuscarClientes";
             this.btnBuscarClientes.Size = new System.Drawing.Size(83, 54);
-            this.btnBuscarClientes.TabIndex = 108;
+            this.btnBuscarClientes.TabIndex = 2;
+            this.tooldica.SetToolTip(this.btnBuscarClientes, "Buscar clientes.");
             this.btnBuscarClientes.UseVisualStyleBackColor = true;
+            this.btnBuscarClientes.Click += new System.EventHandler(this.btnBuscarClientes_Click);
             // 
             // frmPai
             // 
