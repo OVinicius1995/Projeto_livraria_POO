@@ -31,7 +31,7 @@ namespace livraria
             horas.Tick += new EventHandler(Timhoras_Tick);
             horas.Interval = 1; //tempo em milesimos
             horas.Start();
-            
+
         }
 
         private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -62,15 +62,15 @@ namespace livraria
 
         public void frmPai_Load(object sender, EventArgs e)
         {
-           txtClienteVenda.Focus();
-                    
+            txtClienteVenda.Focus();
+
             carrega_venda();
             txtVenda.Enabled = false;
             btnVenda.Enabled = false;
             txtPerfil.Text = livraria_DTO.getPegamat();
             string mat = livraria_DTO.getPegamat();
             carregaFunc(mat);
-            
+
         }
         public void carrega_venda()
         {
@@ -93,7 +93,7 @@ namespace livraria
             txtQtde.Text = dtgVenda.Rows[e.RowIndex].Cells[6].Value.ToString();
             txtValor.Text = dtgVenda.Rows[e.RowIndex].Cells[7].Value.ToString();
             mTBValor.Text = dtgVenda.Rows[e.RowIndex].Cells[7].Value.ToString();
-            
+
 
         }
 
@@ -219,6 +219,17 @@ namespace livraria
             txtClienteVenda.Clear();
             txtClienteVenda.Focus();
             checaValoresNegativos();
+
+            txtIsbn.Enabled = false;
+            txtNome.Enabled = false;
+            txtAutor.Enabled = false;
+            txtEditora.Enabled = false;
+            txtNacionalidade.Enabled = false;
+            txtClassificacao.Enabled = false;
+            txtQtde.Enabled = false;
+            txtVenda.Enabled = false;
+            txtValor.Enabled = false;
+            mTBValor.Enabled = false;
         }
 
         private void txtVenda_TextChanged(object sender, EventArgs e)
@@ -244,7 +255,7 @@ namespace livraria
                 txtValor.Text = "";
                 txtVenda.Text = "";
                 mTBValor.Text = "";
-                
+
                 btnVenda.Enabled = false;
             }
 
@@ -292,17 +303,16 @@ namespace livraria
 
         private void btnPesquisa_Click(object sender, EventArgs e)
         {
+            
+
             if (cmbPesquisa.Text == "Nome")
             {
-
-
                 dto.Nome = txtNome.Text;
                 dtgVenda.DataSource = bll.Pesquisa_livroNome(dto);
 
             }
             if (cmbPesquisa.Text == "Autor")
             {
-
                 dto.Autor = txtAutor.Text;
                 var result = dtgVenda.DataSource = bll.Pesquisa_livroAutor(dto);
                 result = dtgVenda.Rows.ToString();
@@ -316,7 +326,6 @@ namespace livraria
 
             if (cmbPesquisa.Text == "Nacionalidade")
             {
-
                 dto.Nacionalidade = txtNacionalidade.Text;
                 dtgVenda.DataSource = bll.Pesquisa_livroNacionalidade(dto);
             }
@@ -325,6 +334,7 @@ namespace livraria
                 dto.Classificacao = txtClassificacao.Text;
                 dtgVenda.DataSource = bll.Pesquisa_livroClassificacao(dto);
             }
+            checaValoresNegativos();
         }
 
         private void cmbPesquisa_SelectedIndexChanged(object sender, EventArgs e)
@@ -336,15 +346,19 @@ namespace livraria
                 txtEditora.Enabled = false;
                 txtClassificacao.Enabled = false;
                 txtNacionalidade.Enabled = false;
+                txtQtde.Enabled = false;
 
                 txtIsbn.Clear();
                 txtAutor.Clear();
                 txtEditora.Clear();
                 txtClassificacao.Clear();
                 txtNacionalidade.Clear();
+                txtQtde.Clear();
+                mTBValor.Clear();
 
                 txtNome.Enabled = true;
                 txtNome.Focus();
+                
             }
             if (cmbPesquisa.Text == "Autor")
             {
@@ -353,12 +367,15 @@ namespace livraria
                 txtNome.Enabled = false;
                 txtClassificacao.Enabled = false;
                 txtNacionalidade.Enabled = false;
+                txtQtde.Enabled = false;
 
                 txtIsbn.Clear();
                 txtEditora.Clear();
                 txtNome.Clear();
                 txtClassificacao.Clear();
                 txtNacionalidade.Clear();
+                txtQtde.Clear();
+                mTBValor.Clear();
 
                 txtAutor.Enabled = true;
                 txtAutor.Focus();
@@ -371,12 +388,15 @@ namespace livraria
                 txtNome.Enabled = false;
                 txtClassificacao.Enabled = false;
                 txtNacionalidade.Enabled = false;
+                txtQtde.Enabled = false;
 
                 txtIsbn.Clear();
                 txtAutor.Clear();
                 txtNome.Clear();
                 txtClassificacao.Clear();
                 txtNacionalidade.Clear();
+                txtQtde.Clear();
+                mTBValor.Clear();
 
                 txtEditora.Enabled = true;
                 txtEditora.Focus();
@@ -389,12 +409,15 @@ namespace livraria
                 txtEditora.Enabled = false;
                 txtNome.Enabled = false;
                 txtClassificacao.Enabled = false;
+                txtQtde.Enabled = false;
 
                 txtIsbn.Clear();
                 txtAutor.Clear();
                 txtEditora.Clear();
                 txtNome.Clear();
                 txtClassificacao.Clear();
+                txtQtde.Clear();
+                mTBValor.Clear();
 
                 txtNacionalidade.Enabled = true;
                 txtNacionalidade.Focus();
@@ -407,12 +430,15 @@ namespace livraria
                 txtEditora.Enabled = false;
                 txtNome.Enabled = false;
                 txtNacionalidade.Enabled = false;
+                txtQtde.Enabled = false;
 
                 txtIsbn.Clear();
                 txtAutor.Clear();
                 txtEditora.Clear();
                 txtNome.Clear();
                 txtNacionalidade.Clear();
+                txtQtde.Clear();
+                mTBValor.Clear();
 
 
                 txtClassificacao.Enabled = true;
@@ -497,7 +523,8 @@ namespace livraria
                 {
                     txtClienteVenda.Text = "";
                     txtClienteVenda.Focus();
-                } else
+                }
+                else
                 {
                     txtClienteVenda.Text = livraria_DTO.getCliente().ToString();
 
@@ -509,8 +536,9 @@ namespace livraria
         {
             foreach (DataGridViewRow row in dtgVenda.Rows)
             {
-                if (Convert.ToInt32(row.Cells[6].Value) == 0) { 
-                    
+                if (Convert.ToInt32(row.Cells[6].Value) == 0)
+                {
+
                     row.DefaultCellStyle.BackColor = Color.Red;
                 }
             }
@@ -539,7 +567,7 @@ namespace livraria
             Application.Exit();
             frmLogin objRetornaLogin = new frmLogin();
             objRetornaLogin.ShowDialog();
-            
+
         }
     }
 }
