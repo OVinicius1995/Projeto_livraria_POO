@@ -26,16 +26,16 @@ namespace livraria
 
         private async Task initialized()
         {
-            //await wbvLinkedin.EnsureCoreWebView2Async(null);
-            
+            await wbvLinkedin.EnsureCoreWebView2Async(null);
+
         }
 
         private async void InitWeb()
         {
-            //await initialized();
-            //wbvLinkedin.CoreWebView2.Settings.AreBrowserAcceleratorKeysEnabled = false;
-            //wbvLinkedin.CoreWebView2.Settings.AreDefaultContextMenusEnabled = false;
-            //wbvLinkedin.CoreWebView2.Navigate("https://www.linkedin.com/");
+            await initialized();
+            wbvLinkedin.CoreWebView2.Settings.AreBrowserAcceleratorKeysEnabled = false;
+            wbvLinkedin.CoreWebView2.Settings.AreDefaultContextMenusEnabled = false;
+            wbvLinkedin.CoreWebView2.Navigate("https://www.linkedin.com/");
         }
 
         //public int retorna_perfil()
